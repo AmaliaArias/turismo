@@ -19,6 +19,8 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class frm_Cliente extends JFrame {
 
@@ -34,6 +36,7 @@ public class frm_Cliente extends JFrame {
 	private JTextField txtcorreo;
 	private JTextField txtestadocivil;
 	private JTextField txttelefono;
+	private JTextField txtidcliente;
 
 	/**
 	 * Launch the application.
@@ -113,6 +116,7 @@ public class frm_Cliente extends JFrame {
 		txtdocumento.setColumns(10);
 		
 		JButton btnGuardarCliente = new JButton("Guardar");
+		btnGuardarCliente.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -150,7 +154,7 @@ public class frm_Cliente extends JFrame {
 			txtdireccion.setText(" ");
 			}
 		});
-		btnGuardarCliente.setBounds(296, 336, 89, 23);
+		btnGuardarCliente.setBounds(260, 321, 133, 52);
 		contentPane.add(btnGuardarCliente);
 		
 		txtNombres = new JTextField();
@@ -202,5 +206,33 @@ public class frm_Cliente extends JFrame {
 		JLabel lblNewLabel = new JLabel("Tipo Documento");
 		lblNewLabel.setBounds(10, 56, 123, 14);
 		contentPane.add(lblNewLabel);
+		
+		JButton btndelete = new JButton("ELIMINAR");
+		btndelete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Cliente cm = new Cliente();
+				
+				cm.delete(Integer.parseInt(txtidcliente.getText()));
+				
+				txtidcliente.setText(" ");
+			}
+		});
+		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
+		btndelete.setForeground(Color.BLACK);
+		btndelete.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btndelete.setBackground(new Color(255, 255, 255));
+		btndelete.setBounds(260, 188, 155, 57);
+		contentPane.add(btndelete);
+		
+		JLabel lblNewLabel_1 = new JLabel("id Clientes");
+		lblNewLabel_1.setBounds(309, 146, 69, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtidcliente = new JTextField();
+		txtidcliente.setBounds(285, 164, 86, 20);
+		contentPane.add(txtidcliente);
+		txtidcliente.setColumns(10);
 	}
 }

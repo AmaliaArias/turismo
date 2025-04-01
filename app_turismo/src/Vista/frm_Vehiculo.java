@@ -14,6 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Color;
 
 public class frm_Vehiculo extends JFrame {
 
@@ -27,6 +30,7 @@ public class frm_Vehiculo extends JFrame {
 	private JTextField txtnumeromotor;
 	private JTextField txtcategoria;
 	private JTextField txtidtipovh;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -50,41 +54,51 @@ public class frm_Vehiculo extends JFrame {
 	public frm_Vehiculo() {
 		setTitle("Tabla Vehiculo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 465, 421);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 164));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblIdVehiculo = new JLabel("Matricula");
-		lblIdVehiculo.setBounds(10, 59, 99, 14);
+		lblIdVehiculo.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblIdVehiculo.setBounds(65, 74, 113, 14);
 		contentPane.add(lblIdVehiculo);
 		
 		txtMatricula = new JTextField();
+		txtMatricula.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		txtMatricula.setColumns(10);
-		txtMatricula.setBounds(143, 56, 86, 20);
+		txtMatricula.setBounds(227, 71, 122, 20);
 		contentPane.add(txtMatricula);
 		
 		txtidVehiculo = new JTextField();
+		txtidVehiculo.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		txtidVehiculo.setColumns(10);
-		txtidVehiculo.setBounds(143, 29, 86, 20);
+		txtidVehiculo.setBounds(227, 44, 122, 20);
 		contentPane.add(txtidVehiculo);
 		
 		JLabel Matricula = new JLabel("Id Vehiculo");
-		Matricula.setBounds(10, 32, 86, 14);
+		Matricula.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		Matricula.setBounds(65, 47, 122, 14);
 		contentPane.add(Matricula);
 		
 		JLabel lblNewLabel_2 = new JLabel("Marca");
-		lblNewLabel_2.setBounds(10, 87, 86, 14);
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblNewLabel_2.setBounds(65, 102, 122, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		txtmarca = new JTextField();
+		txtmarca.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		txtmarca.setColumns(10);
-		txtmarca.setBounds(143, 84, 86, 20);
+		txtmarca.setBounds(227, 99, 122, 20);
 		contentPane.add(txtmarca);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		JButton btnGuardar = new JButton("SAVE");
+		btnGuardar.setBackground(Color.YELLOW);
+		btnGuardar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -98,56 +112,93 @@ public class frm_Vehiculo extends JFrame {
 						Integer.parseInt(txtnumeromotor.getText()), 
 						txtcategoria.getText(),
 						Integer.parseInt(txtidtipovh.getText()), 
-						Integer.parseInt(txtidVehiculo.getText()));				
+						Integer.parseInt(txtidVehiculo.getText()));		
+				
+				txtMatricula.setText("  ");
+				txtmarca.setText("  ");
+				txtpuestos.setText("  ");
+				txtmodelo.setText("  ");
+				txtnumeromotor.setText("  ");
+				txtcategoria.setText("  ");
+				txtidtipovh.setText("  ");
+				txtidVehiculo.setText("  ");
 			}
 		});
-		btnGuardar.setBounds(322, 221, 89, 23);
+		btnGuardar.setBounds(31, 287, 156, 69);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Puestos");
-		lblNewLabel_2_1.setBounds(10, 115, 86, 14);
+		lblNewLabel_2_1.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblNewLabel_2_1.setBounds(65, 130, 122, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		txtpuestos = new JTextField();
+		txtpuestos.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		txtpuestos.setColumns(10);
-		txtpuestos.setBounds(143, 112, 86, 20);
+		txtpuestos.setBounds(227, 127, 122, 20);
 		contentPane.add(txtpuestos);
 		
 		JLabel lblNewLabel_2_2 = new JLabel("Modelo");
-		lblNewLabel_2_2.setBounds(10, 143, 86, 14);
+		lblNewLabel_2_2.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblNewLabel_2_2.setBounds(65, 158, 113, 14);
 		contentPane.add(lblNewLabel_2_2);
 		
 		txtmodelo = new JTextField();
+		txtmodelo.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		txtmodelo.setColumns(10);
-		txtmodelo.setBounds(143, 140, 86, 20);
+		txtmodelo.setBounds(227, 155, 122, 20);
 		contentPane.add(txtmodelo);
 		
 		JLabel lblNewLabel_2_3 = new JLabel("Numero Motor");
-		lblNewLabel_2_3.setBounds(10, 171, 86, 14);
+		lblNewLabel_2_3.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblNewLabel_2_3.setBounds(65, 186, 127, 14);
 		contentPane.add(lblNewLabel_2_3);
 		
 		txtnumeromotor = new JTextField();
+		txtnumeromotor.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		txtnumeromotor.setColumns(10);
-		txtnumeromotor.setBounds(143, 168, 86, 20);
+		txtnumeromotor.setBounds(227, 183, 122, 20);
 		contentPane.add(txtnumeromotor);
 		
 		JLabel lblNewLabel_2_4 = new JLabel("Categoria");
-		lblNewLabel_2_4.setBounds(10, 196, 86, 14);
+		lblNewLabel_2_4.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblNewLabel_2_4.setBounds(65, 217, 122, 14);
 		contentPane.add(lblNewLabel_2_4);
 		
 		txtcategoria = new JTextField();
+		txtcategoria.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		txtcategoria.setColumns(10);
-		txtcategoria.setBounds(143, 199, 86, 20);
+		txtcategoria.setBounds(227, 214, 122, 20);
 		contentPane.add(txtcategoria);
 		
 		JLabel lblNewLabel = new JLabel("id Tipo de Vehiculo");
-		lblNewLabel.setBounds(10, 230, 114, 14);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		lblNewLabel.setBounds(65, 245, 122, 14);
 		contentPane.add(lblNewLabel);
 		
 		txtidtipovh = new JTextField();
-		txtidtipovh.setBounds(143, 230, 86, 20);
+		txtidtipovh.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		txtidtipovh.setBounds(227, 245, 122, 20);
 		contentPane.add(txtidtipovh);
 		txtidtipovh.setColumns(10);
+		
+		btnNewButton = new JButton("DELETE");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Vehiculo vh = new Vehiculo();
+				
+				vh.delete(Integer.parseInt(txtidVehiculo.getText()));
+				
+				txtidVehiculo.setText(" ");
+			}
+		});
+		btnNewButton.setBackground(Color.YELLOW);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
+		btnNewButton.setBounds(226, 290, 156, 66);
+		contentPane.add(btnNewButton);
 	}
 
 }

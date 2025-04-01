@@ -24,8 +24,6 @@ public class Paquetes {
 	public Double pecio;
 	public int idAgencia;
 
-	
-
 	public Paquetes(int idDestino, int idOrigen, String fechaVenta, String horaventa, String fechaejecucion,
 			String horasalida, String observaciones, int idMedios, String matricula, int idpromotor, Double pecio,
 			int idAgencia) {
@@ -44,20 +42,16 @@ public class Paquetes {
 		this.idAgencia = idAgencia;
 	}
 
-	
 	public Paquetes() {
 	}
-
 
 	public int getIdDestino() {
 		return idDestino;
 	}
 
-
 	public void setIdDestino(int idDestino) {
 		this.idDestino = idDestino;
 	}
-
 
 	public int getIdOrigen() {
 		return idOrigen;
@@ -66,7 +60,6 @@ public class Paquetes {
 	public void setIdOrigen(int idOrigen) {
 		this.idOrigen = idOrigen;
 	}
-
 
 	public String getFechaVenta() {
 		return fechaVenta;
@@ -83,7 +76,6 @@ public class Paquetes {
 	public void setHoraventa(String horaventa) {
 		this.horaventa = horaventa;
 	}
-
 
 	public String getFechaejecucion() {
 		return fechaejecucion;
@@ -145,7 +137,6 @@ public class Paquetes {
 		return idAgencia;
 	}
 
-
 	public void setIdAgencia(int idAgencia) {
 		this.idAgencia = idAgencia;
 	}
@@ -185,4 +176,31 @@ public class Paquetes {
 
 	}
 
+	public void delete(int codigo) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+
+		String script = "DELETE FROM tbl_paquete WHERE codigo = ?";
+
+		try {
+			dbConnection = conector.conectarBD();
+			pst = dbConnection.prepareStatement(script);
+
+			// parametrizar el campo
+			pst.setInt(1, codigo);
+
+			// CONFIRMAR LA OPERACION
+			int resp = JOptionPane.showConfirmDialog(null, " ¿Desea eliminar el registro # " + codigo + "?");
+
+			if (resp == JOptionPane.OK_OPTION) {
+
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null, "Registro # " + codigo + " ELIMINADO");
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 }

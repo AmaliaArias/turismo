@@ -16,6 +16,8 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class frm_Promotor extends JFrame {
 
@@ -30,6 +32,9 @@ public class frm_Promotor extends JFrame {
 	private JTextField txtnumerod;
 	private JTextField txttelefono;
 	private JTextField txttipodocumento;
+	private JLabel lblNewLabel_1;
+	private JTextField txtidpromotor;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -115,7 +120,9 @@ public class frm_Promotor extends JFrame {
 		lblNewLabel_2_4.setBounds(10, 200, 110, 14);
 		contentPane.add(lblNewLabel_2_4);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		JButton btnGuardar = new JButton("SAVE");
+		btnGuardar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -144,7 +151,7 @@ public class frm_Promotor extends JFrame {
 						txttelefono.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(335, 227, 89, 23);
+		btnGuardar.setBounds(289, 206, 135, 62);
 		contentPane.add(btnGuardar);
 		
 		txtnumerod = new JTextField();
@@ -175,5 +182,30 @@ public class frm_Promotor extends JFrame {
 		JLabel lblNumeroDeDocumento = new JLabel("Numero de Documento");
 		lblNumeroDeDocumento.setBounds(10, 51, 123, 14);
 		contentPane.add(lblNumeroDeDocumento);
+		
+		lblNewLabel_1 = new JLabel("ID Promotor");
+		lblNewLabel_1.setBounds(289, 51, 96, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtidpromotor = new JTextField();
+		txtidpromotor.setBounds(289, 79, 86, 20);
+		contentPane.add(txtidpromotor);
+		txtidpromotor.setColumns(10);
+		
+		btnNewButton = new JButton("DELETE");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Promotor pm = new Promotor();
+				
+				pm.delete(Integer.parseInt(txtidpromotor.getText()));
+				
+				txtidpromotor.setText(" ");
+			}
+		});
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
+		btnNewButton.setBounds(289, 104, 135, 62);
+		contentPane.add(btnNewButton);
 	}
 }

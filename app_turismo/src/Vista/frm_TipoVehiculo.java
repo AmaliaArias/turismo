@@ -20,6 +20,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class frm_TipoVehiculo extends JFrame {
 
@@ -27,6 +28,7 @@ public class frm_TipoVehiculo extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtnombretv;
 	private JTextField txtobservaciontv;
+	private JTextField txtidtipovehi;
 
 	/**
 	 * Launch the application.
@@ -50,7 +52,7 @@ public class frm_TipoVehiculo extends JFrame {
 	public frm_TipoVehiculo() {
 		setTitle("Tipo de Vehiculos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 386, 300);
+		setBounds(100, 100, 444, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(156, 204, 226));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,23 +64,23 @@ public class frm_TipoVehiculo extends JFrame {
 		txtnombretv.setToolTipText("Escribe el nombre del vehiculo");
 		txtnombretv.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		txtnombretv.setColumns(10);
-		txtnombretv.setBounds(177, 47, 126, 23);
+		txtnombretv.setBounds(123, 34, 126, 23);
 		contentPane.add(txtnombretv);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(64, 50, 86, 14);
+		lblNewLabel_1.setBounds(10, 37, 86, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Observación");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(64, 95, 86, 14);
+		lblNewLabel_2.setBounds(10, 82, 86, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		txtobservaciontv = new JTextField();
 		txtobservaciontv.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		txtobservaciontv.setColumns(10);
-		txtobservaciontv.setBounds(177, 92, 141, 86);
+		txtobservaciontv.setBounds(123, 79, 141, 86);
 		contentPane.add(txtobservaciontv);
 		
 		JButton btnGuardar = new JButton("Guardar");
@@ -99,8 +101,35 @@ public class frm_TipoVehiculo extends JFrame {
 				txtobservaciontv.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(142, 215, 89, 23);
+		btnGuardar.setBounds(20, 200, 89, 23);
 		contentPane.add(btnGuardar);
+		
+		JLabel lblIdTipovehiculo = new JLabel("ID TipoVehiculo");
+		lblIdTipovehiculo.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblIdTipovehiculo.setBounds(311, 96, 107, 15);
+		contentPane.add(lblIdTipovehiculo);
+		
+		txtidtipovehi = new JTextField();
+		txtidtipovehi.setColumns(10);
+		txtidtipovehi.setBounds(311, 122, 86, 20);
+		contentPane.add(txtidtipovehi);
+		
+		JButton btnNewButton = new JButton("DELETE");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TipoVehiculo cr = new TipoVehiculo();
+				
+				cr.delete(Integer.parseInt(txtidtipovehi.getText()));
+				
+				txtidtipovehi.setText(" ");
+				
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton.setBounds(271, 179, 147, 64);
+		contentPane.add(btnNewButton);
 	}
 
 }

@@ -10,7 +10,7 @@ import Controlador.Conexion;
 
 public class Vehiculo {
 	Conexion conector = new Conexion();
-	
+
 	public String matricula;
 	public String marca;
 	public int puestos;
@@ -19,11 +19,10 @@ public class Vehiculo {
 	public String categoria;
 	public int idtipovehiculo;
 	public int id;
-	
-	
-	public Vehiculo(String matricula, String marca, int puestos, String modelo, int numeromotor,
-			String categoria, int idtipovehiculo, int id) {
-	
+
+	public Vehiculo(String matricula, String marca, int puestos, String modelo, int numeromotor, String categoria,
+			int idtipovehiculo, int id) {
+
 		super();
 		this.matricula = matricula;
 		this.marca = marca;
@@ -100,19 +99,19 @@ public class Vehiculo {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public void create (String matricula, String marca, int puestos, String modelo, int numeromotor,
-			String categoria, int idtipovehiculo, int id) {
-		
+
+	public void create(String matricula, String marca, int puestos, String modelo, int numeromotor, String categoria,
+			int idtipovehiculo, int id) {
+
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
 
 		String script = "INSERT INTO tbl_vehiculo (matricula, marca, puestos, modelo, numeromotor, categoria, idtipovehiculo, id) values (?, ?, ?, ?, ?, ?, ?, ?)";
-		
+
 		try {
 			dbConnection = conector.conectarBD();
 			pst = dbConnection.prepareStatement(script);
-			
+
 			pst.setString(1, matricula);
 			pst.setString(2, marca);
 			pst.setInt(3, puestos);
@@ -121,18 +120,44 @@ public class Vehiculo {
 			pst.setString(6, categoria);
 			pst.setInt(7, idtipovehiculo);
 			pst.setInt(8, id);
-			
+
 			pst.executeUpdate();
 			JOptionPane.showConfirmDialog(null, "Registro exitoso");
-			
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			
+
 		}
-		
-		
+
 	}
-	
-	
+
+	public void delete(int id) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+
+		String script = "DELETE FROM tbl_vehiculo WHERE id = ?";
+
+		try {
+			dbConnection = conector.conectarBD();
+			pst = dbConnection.prepareStatement(script);
+
+			// parametrizar el campo
+			pst.setInt(1, id);
+
+			// CONFIRMAR LA OPERACION
+			int resp = JOptionPane.showConfirmDialog(null, " ¿Desea eliminar el registro # " + id + "?");
+
+			if (resp == JOptionPane.OK_OPTION) {
+
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null, "Registro # " + id + " ELIMINADO");
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
 	
 }

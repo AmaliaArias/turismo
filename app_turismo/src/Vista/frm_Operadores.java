@@ -15,6 +15,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class frm_Operadores extends JFrame {
 
@@ -31,6 +33,7 @@ public class frm_Operadores extends JFrame {
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_7;
 	private JTextField txtidvehiculo;
+	private JTextField txtidoperadores;
 
 	/**
 	 * Launch the application.
@@ -118,7 +121,9 @@ public class frm_Operadores extends JFrame {
 		contentPane.add(txtCorreo);
 		txtCorreo.setColumns(10);
 		
-		JButton btnGuardarOperadores = new JButton("Guardar");
+		JButton btnGuardarOperadores = new JButton("SAVE");
+		btnGuardarOperadores.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnGuardarOperadores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardarOperadores.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -147,7 +152,7 @@ public class frm_Operadores extends JFrame {
 				txtnumeroDocum.setText(" ");
 			}
 		});
-		btnGuardarOperadores.setBounds(302, 232, 89, 23);
+		btnGuardarOperadores.setBounds(266, 198, 146, 57);
 		contentPane.add(btnGuardarOperadores);
 		
 		lblNewLabel_5 = new JLabel("Telefono");
@@ -171,5 +176,32 @@ public class frm_Operadores extends JFrame {
 		txtidvehiculo.setBounds(111, 233, 86, 20);
 		contentPane.add(txtidvehiculo);
 		txtidvehiculo.setColumns(10);
+		
+		JButton btnNewButton = new JButton("DELETE");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Operadores op = new Operadores();
+				
+				op.delete(Integer.parseInt(txtidoperadores.getText()));
+				
+				txtidoperadores.setText(" ");
+				
+			}
+		});
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
+		btnNewButton.setBounds(266, 122, 146, 65);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_8 = new JLabel("id Operadores");
+		lblNewLabel_8.setBounds(266, 75, 87, 14);
+		contentPane.add(lblNewLabel_8);
+		
+		txtidoperadores = new JTextField();
+		txtidoperadores.setBounds(266, 91, 86, 20);
+		contentPane.add(txtidoperadores);
+		txtidoperadores.setColumns(10);
 	}
 }

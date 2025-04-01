@@ -142,7 +142,7 @@ public class Cliente {
 		try {
 			dbConnection = conector.conectarBD();
 			pst = dbConnection.prepareStatement(script);
-			
+
 			pst.setString(1, tipoDocumento);
 			pst.setInt(2, documento);
 			pst.setString(3, nombres);
@@ -157,6 +157,34 @@ public class Cliente {
 
 			pst.executeUpdate();
 			JOptionPane.showConfirmDialog(null, "Registro exitoso");
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	public void delete(int idclientes) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+
+		String script = "DELETE FROM tbl_clientes WHERE idclientes = ?";
+
+		try {
+			dbConnection = conector.conectarBD();
+			pst = dbConnection.prepareStatement(script);
+
+			// parametrizar el campo
+			pst.setInt(1, idclientes);
+
+			// CONFIRMAR LA OPERACION
+			int resp = JOptionPane.showConfirmDialog(null, " ¿Desea eliminar el registro # " + idclientes + "?");
+
+			if (resp == JOptionPane.OK_OPTION) {
+
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null, "Registro # " + idclientes + " ELIMINADO");
+			}
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

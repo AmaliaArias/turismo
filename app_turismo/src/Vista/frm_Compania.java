@@ -15,6 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class frm_Compania extends JFrame {
 
@@ -27,6 +28,9 @@ public class frm_Compania extends JFrame {
 	private JTextField txtfechacreacion;
 	private JTextField txtpaginaweb;
 	private JTextField txtobservacion;
+	private JButton btnNewButton;
+	private JLabel lblNewLabel;
+	private JTextField txtidcompania;
 
 	/**
 	 * Launch the application.
@@ -50,7 +54,7 @@ public class frm_Compania extends JFrame {
 	public frm_Compania() {
 		setTitle("Compañia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 366);
+		setBounds(100, 100, 450, 435);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(170, 242, 234));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -135,7 +139,8 @@ public class frm_Compania extends JFrame {
 		contentPane.add(txtobservacion);
 		txtobservacion.setColumns(10);
 		
-		JButton btnGuardarCompania = new JButton("Guardar");
+		JButton btnGuardarCompania = new JButton("SAVE");
+		btnGuardarCompania.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardarCompania.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnGuardarCompania.addMouseListener(new MouseAdapter() {
 			@Override
@@ -143,6 +148,7 @@ public class frm_Compania extends JFrame {
 				
 				
 				Compania cm = new Compania();
+				
 				cm.create(txtRazonSocial.getText(), 
 						txtdireccion.getText(), 
 						txtcorreoelectronicocompania.getText(), 
@@ -151,10 +157,45 @@ public class frm_Compania extends JFrame {
 						txtpaginaweb.getText(), 
 						txtobservacion.getText());
 				
+				txtRazonSocial.setText(" ");
+				txtdireccion.setText(" ");
+				txtcorreoelectronicocompania.setText(" ");
+				txttelefonocompania.setText(" ");
+				txtfechacreacion.setText(" ");
+				txtpaginaweb.setText(" ");
+				txtobservacion.setText(" ");
+				
 			}
 		});
-		btnGuardarCompania.setBounds(318, 117, 89, 23);
+		btnGuardarCompania.setBounds(21, 326, 155, 57);
 		contentPane.add(btnGuardarCompania);
+		
+		btnNewButton = new JButton("DELETE");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Compania cm = new Compania();
+				
+				cm.delete(Integer.parseInt(txtidcompania.getText()));
+				
+				txtidcompania.setText(" ");
+				
+			}
+		});
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
+		btnNewButton.setBounds(269, 118, 155, 65);
+		contentPane.add(btnNewButton);
+		
+		lblNewLabel = new JLabel("id Compañias");
+		lblNewLabel.setBounds(300, 64, 91, 14);
+		contentPane.add(lblNewLabel);
+		
+		txtidcompania = new JTextField();
+		txtidcompania.setBounds(300, 89, 86, 20);
+		contentPane.add(txtidcompania);
+		txtidcompania.setColumns(10);
 	}
 
 }

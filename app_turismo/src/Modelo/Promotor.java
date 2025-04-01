@@ -10,7 +10,7 @@ import Controlador.Conexion;
 
 public class Promotor {
 	Conexion conector = new Conexion();
-	
+
 	public String tipoDocumento;
 	public int documento;
 	public String nombres;
@@ -20,9 +20,9 @@ public class Promotor {
 	public String correoCorporativo;
 	public String fechaNacimiento;
 	public int telefono;
-	
-	public Promotor(String tipoDocumento, int documento, String nombres, String apellidos,
-			String direccion, String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono) {
+
+	public Promotor(String tipoDocumento, int documento, String nombres, String apellidos, String direccion,
+			String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono) {
 		super();
 		this.tipoDocumento = tipoDocumento;
 		this.documento = documento;
@@ -109,19 +109,19 @@ public class Promotor {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-	
-	public void create (String tipoDocumento, int documento, String nombres, String apellidos,
-			String direccion, String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono) {
-		
+
+	public void create(String tipoDocumento, int documento, String nombres, String apellidos, String direccion,
+			String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono) {
+
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
-		
+
 		String script = "INSERT INTO tbl_promotor (tipoDocumento, documento, nombres, apellidos, direccion, correoPersonal, correoCorporativo, fechaNacimiento, telefono) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+
 		try {
 			dbConnection = conector.conectarBD();
 			pst = dbConnection.prepareStatement(script);
-		
+
 			pst.setString(1, tipoDocumento);
 			pst.setInt(2, documento);
 			pst.setString(3, nombres);
@@ -131,16 +131,43 @@ public class Promotor {
 			pst.setString(7, correoCorporativo);
 			pst.setString(8, fechaNacimiento);
 			pst.setInt(9, telefono);
-		
+
 			pst.executeUpdate();
 			JOptionPane.showConfirmDialog(null, "Registro exitoso");
-			
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			
-		}
-		
-	}
-	
-}
 
+		}
+
+	}
+
+	public void delete(int idPromotor) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+
+		String script = "DELETE FROM tbl_promotor WHERE idPromotor = ?";
+
+		try {
+			dbConnection = conector.conectarBD();
+			pst = dbConnection.prepareStatement(script);
+
+			// parametrizar el campo
+			pst.setInt(1, idPromotor);
+
+			// CONFIRMAR LA OPERACION
+			int resp = JOptionPane.showConfirmDialog(null, " ¿Desea eliminar el registro # " + idPromotor + "?");
+
+			if (resp == JOptionPane.OK_OPTION) {
+
+				pst.executeUpdate();
+				JOptionPane.showConfirmDialog(null, "Registro # " + idPromotor + " ELIMINADO");
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+}
