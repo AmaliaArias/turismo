@@ -2,9 +2,11 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -196,6 +198,47 @@ public class Paquetes {
 
 				pst.executeUpdate();
 				JOptionPane.showConfirmDialog(null, "Registro # " + codigo + " ELIMINADO");
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+	
+	
+	//BUSCAR
+	public void readOne(int codigo, JTextField idDestino, JTextField idOrigen, JTextField fechaVenta, JTextField horaventa,
+			JTextField fechaejecucion, JTextField horasalida, JTextField observaciones, JTextField idMedios, JTextField matricula, 
+			JTextField idpromotor, JTextField pecio, JTextField idAgencia) {
+		
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "SELECT * FROM tbl_paquete WHERE codigo = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+
+			pst.setInt(1, codigo);
+
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+			while (rs.next()) {
+				idDestino.setText(rs.getString(2));
+				idOrigen.setText(rs.getString(3));
+				fechaVenta.setText(rs.getString(4));
+				horaventa.setText(rs.getString(5));
+				fechaejecucion.setText(rs.getString(6));
+				horasalida.setText(rs.getString(7));
+				observaciones.setText(rs.getString(8));
+				idMedios.setText(rs.getString(9));
+				matricula.setText(rs.getString(10));
+				idpromotor.setText(rs.getString(11));
+				pecio.setText(rs.getString(12));
+				idAgencia.setText(rs.getString(13));
+				
 			}
 
 		} catch (SQLException e) {

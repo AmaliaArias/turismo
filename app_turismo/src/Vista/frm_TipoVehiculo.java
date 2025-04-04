@@ -52,9 +52,9 @@ public class frm_TipoVehiculo extends JFrame {
 	public frm_TipoVehiculo() {
 		setTitle("Tipo de Vehiculos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 444, 300);
+		setBounds(100, 100, 469, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(156, 204, 226));
+		contentPane.setBackground(new Color(255, 188, 121));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -83,7 +83,9 @@ public class frm_TipoVehiculo extends JFrame {
 		txtobservaciontv.setBounds(123, 79, 141, 86);
 		contentPane.add(txtobservaciontv);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		JButton btnGuardar = new JButton("SAVE");
+		btnGuardar.setBackground(new Color(255, 130, 4));
+		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -101,7 +103,7 @@ public class frm_TipoVehiculo extends JFrame {
 				txtobservaciontv.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(20, 200, 89, 23);
+		btnGuardar.setBounds(10, 196, 132, 57);
 		contentPane.add(btnGuardar);
 		
 		JLabel lblIdTipovehiculo = new JLabel("ID TipoVehiculo");
@@ -115,6 +117,7 @@ public class frm_TipoVehiculo extends JFrame {
 		contentPane.add(txtidtipovehi);
 		
 		JButton btnNewButton = new JButton("DELETE");
+		btnNewButton.setBackground(new Color(255, 130, 4));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -128,8 +131,24 @@ public class frm_TipoVehiculo extends JFrame {
 		});
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton.setBounds(271, 179, 147, 64);
+		btnNewButton.setBounds(311, 196, 132, 57);
 		contentPane.add(btnNewButton);
+		
+		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TipoVehiculo cr = new TipoVehiculo();
+				
+				cr.readOne(Integer.parseInt(txtidtipovehi.getText()), txtnombretv, txtobservaciontv);
+				
+				
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(152, 199, 150, 51);
+		contentPane.add(btnbuscar);
 	}
 
 }

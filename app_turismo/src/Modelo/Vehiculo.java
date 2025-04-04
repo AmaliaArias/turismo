@@ -2,9 +2,11 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -131,6 +133,8 @@ public class Vehiculo {
 
 	}
 
+	
+	//DELETE
 	public void delete(int id) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -159,5 +163,37 @@ public class Vehiculo {
 
 	}
 
-	
+	// SEARH - UPDATE
+		public void readOne(String matricula, JTextField id,  JTextField marca, JTextField puestos, JTextField modelo, JTextField numeromotor, JTextField categoria,
+				JTextField idtipovehiculo) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+			String script = "SELECT * FROM tbl_vehiculo WHERE matricula = ?";
+
+			try {
+				dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+				pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+
+				pst.setString(1, matricula);
+
+				ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+				while (rs.next()) {
+					
+					marca.setText(rs.getString(2));
+					puestos.setText(rs.getString(3));
+					modelo.setText(rs.getString(4));
+					numeromotor.setText(rs.getString(5));
+					categoria.setText(rs.getString(6));
+					idtipovehiculo.setText(rs.getString(7));
+					id.setText(rs.getString(8));
+
+				}
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
 }

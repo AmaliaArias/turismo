@@ -2,9 +2,11 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -119,6 +121,7 @@ public class Compania {
 
 	}
 
+	// DELETE
 	public void delete(int idcompanias) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -146,4 +149,38 @@ public class Compania {
 		}
 
 	}
+
+	// BUSCAR
+	public void readOne(int idcompanias, JTextField razonsocial, JTextField direccion, JTextField correo,
+			JTextField telefono, JTextField fechacreacion, JTextField web, JTextField observacion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "SELECT * FROM tbl_companias WHERE idcompanias = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+
+			pst.setInt(1, idcompanias);
+
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+			while (rs.next()) {
+				razonsocial.setText(rs.getString(2));
+				direccion.setText(rs.getString(3));
+				correo.setText(rs.getString(4));
+				telefono.setText(rs.getString(5));
+				fechacreacion.setText(rs.getString(6));
+				web.setText(rs.getString(7));
+				observacion.setText(rs.getString(8));
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
 }

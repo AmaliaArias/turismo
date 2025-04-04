@@ -1,6 +1,6 @@
 package Vista;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -265,12 +265,31 @@ public class frm_paquetes extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_5 = new JLabel("Codigo");
-		lblNewLabel_5.setBounds(231, 446, 46, 14);
+		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblNewLabel_5.setBounds(231, 446, 75, 20);
 		contentPane.add(lblNewLabel_5);
 		
 		txtcodigo = new JTextField();
-		txtcodigo.setBounds(231, 477, 86, 20);
+		txtcodigo.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		txtcodigo.setBounds(231, 477, 75, 20);
 		contentPane.add(txtcodigo);
 		txtcodigo.setColumns(10);
+		
+		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Paquetes pq = new Paquetes();
+				
+				pq.readOne(Integer.parseInt(txtcodigo.getText()), txtIDDestino, txtIDOrigen, txtFechaVenta, txtHoraVenta, txtFechaSalida, txtHoraSalida, txtObservaciones, txtidmedios, txtMatricula, txtidpromotor, txtPrecio, txtidagencia);
+				
+				
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(25, 526, 150, 51);
+		contentPane.add(btnbuscar);
 	}
 }

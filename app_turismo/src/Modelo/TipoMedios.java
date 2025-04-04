@@ -2,9 +2,11 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -88,4 +90,56 @@ public class TipoMedios {
 		}
 
 	}
+	
+	// SEARH - UPDATE
+		public void readOne(int codigo, JTextField nombres, JTextField observacion ) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+			String script = "SELECT * FROM tbl_tiposmedios WHERE idTipoMedios = ?";
+
+			try {
+				dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+				pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+
+				pst.setInt(1, codigo);
+
+				ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+				while (rs.next()) {
+					nombres.setText(rs.getString(2));
+					observacion.setText(rs.getString(3));
+					
+				}
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+	
+		
+		
+		//ALL 
+		//CONSULTAR TODOS LOS REGISTROS DE LA TABLA TIPODEMEDIOS
+		public void readAll (int tipomedios, String nombre, String observacion) {
+			Connection dbConnection = null;
+			PreparedStatement pst = null; //PREPARA LA TRANSACCION
+		 
+		 String script = "SELECT * FROM tbl_tiposmedios WHERE idTipoMedios = ?";
+		 
+		 try { 
+			 dbConnection = conector.conectarBD(); //ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); //ABRIR EL BUFFLE ResultSet rs =
+			ResultSet rs = pst.executeQuery(); //ALMACENAMIENTO TEMPORAL
+		 
+		 while (rs.next()) {
+			 System.out.println(rs.getString(1) + " - " + rs.getString(2) + " - " + rs.getString(3));
+			 
+			 }
+		 
+		
+		 } catch (SQLException e) { System.out.println(e.getMessage()); }
+		 
+		 }
 }

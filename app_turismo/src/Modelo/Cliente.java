@@ -2,9 +2,11 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -130,6 +132,9 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
+	
+	
+	//CREATE
 	public void create(String tipoDocumento, int documento, String nombres, String apellidos, String eps,
 			String alergias, String fechaNacimiento, String correo, String estadocivil, int telefono,
 			String direccion) {
@@ -164,6 +169,9 @@ public class Cliente {
 
 	}
 
+	
+	
+	//DELETE
 	public void delete(int idclientes) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -191,5 +199,45 @@ public class Cliente {
 		}
 
 	}
+	
+	
+	//BUSCAR
+	public void readOne(int idclientes, JTextField tipoDocumento, JTextField documento, JTextField nombres, JTextField apellidos, JTextField eps,
+			JTextField alergias, JTextField fechaNacimiento, JTextField correo, JTextField estadocivil, JTextField telefono,
+			JTextField direccion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "SELECT * FROM tbl_clientes WHERE idclientes = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+
+			pst.setInt(1, idclientes);
+
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+			while (rs.next()) {
+				tipoDocumento.setText(rs.getString(2));
+				documento.setText(rs.getString(3));
+				nombres.setText(rs.getString(4));
+				apellidos.setText(rs.getString(5));
+				eps.setText(rs.getString(6));
+				alergias.setText(rs.getString(7));
+				fechaNacimiento.setText(rs.getString(8));
+				correo.setText(rs.getString(9));
+				estadocivil.setText(rs.getString(10));
+				telefono.setText(rs.getString(11));
+				direccion.setText(rs.getString(12));
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
 
 }

@@ -18,6 +18,8 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import javax.swing.JSeparator;
+import javax.swing.JScrollBar;
 
 public class frm_Promotor extends JFrame {
 
@@ -35,6 +37,8 @@ public class frm_Promotor extends JFrame {
 	private JLabel lblNewLabel_1;
 	private JTextField txtidpromotor;
 	private JButton btnNewButton;
+	private JButton btnbuscar;
+	private JTextField txtcontrasena;
 
 	/**
 	 * Launch the application.
@@ -58,9 +62,9 @@ public class frm_Promotor extends JFrame {
 	public frm_Promotor() {
 		setTitle("Tabla Promotor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 321);
+		setBounds(100, 100, 450, 434);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(156, 204, 226));
+		contentPane.setBackground(new Color(132, 255, 132));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -121,6 +125,7 @@ public class frm_Promotor extends JFrame {
 		contentPane.add(lblNewLabel_2_4);
 		
 		JButton btnGuardar = new JButton("SAVE");
+		btnGuardar.setBackground(new Color(128, 255, 0));
 		btnGuardar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addMouseListener(new MouseAdapter() {
@@ -137,7 +142,11 @@ public class frm_Promotor extends JFrame {
 						txtcorreopersonal.getText(), 
 						txtcorreocorpo.getText(), 
 						txtfechanac .getText(),
-						Integer.parseInt(txttelefono.getText()));
+						Integer.parseInt(txttelefono.getText()),
+						txtcontrasena.getText());
+						
+					
+				
 			
 				
 						txttipodocumento.setText(" ");
@@ -151,7 +160,7 @@ public class frm_Promotor extends JFrame {
 						txttelefono.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(289, 206, 135, 62);
+		btnGuardar.setBounds(41, 300, 135, 62);
 		contentPane.add(btnGuardar);
 		
 		txtnumerod = new JTextField();
@@ -193,6 +202,7 @@ public class frm_Promotor extends JFrame {
 		txtidpromotor.setColumns(10);
 		
 		btnNewButton = new JButton("DELETE");
+		btnNewButton.setBackground(new Color(128, 255, 0));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -207,5 +217,28 @@ public class frm_Promotor extends JFrame {
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
 		btnNewButton.setBounds(289, 104, 135, 62);
 		contentPane.add(btnNewButton);
+		
+		btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Promotor pm = new Promotor();
+				
+				pm.readOne(Integer.parseInt(txtidpromotor.getText()), txttipodocumento,txtnumerod, txtnombre, txtapellido, txtdireccion, txtcorreopersonal, txtcorreocorpo, txtfechanac, txttelefono);
+				
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(274, 200, 150, 51);
+		contentPane.add(btnbuscar);
+		
+		txtcontrasena = new JTextField();
+		txtcontrasena.setText("ESTO NO ES NADA");
+		txtcontrasena.setToolTipText("");
+		txtcontrasena.setColumns(10);
+		txtcontrasena.setBounds(288, 342, 123, 20);
+		contentPane.add(txtcontrasena);
 	}
 }

@@ -17,6 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Color;
 
 public class frm_Operadores extends JFrame {
 
@@ -57,8 +58,9 @@ public class frm_Operadores extends JFrame {
 	public frm_Operadores() {
 		setTitle("Operadores Turismo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 383);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(121, 255, 121));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -122,6 +124,7 @@ public class frm_Operadores extends JFrame {
 		txtCorreo.setColumns(10);
 		
 		JButton btnGuardarOperadores = new JButton("SAVE");
+		btnGuardarOperadores.setBackground(new Color(0, 255, 0));
 		btnGuardarOperadores.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnGuardarOperadores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardarOperadores.addMouseListener(new MouseAdapter() {
@@ -152,7 +155,7 @@ public class frm_Operadores extends JFrame {
 				txtnumeroDocum.setText(" ");
 			}
 		});
-		btnGuardarOperadores.setBounds(266, 198, 146, 57);
+		btnGuardarOperadores.setBounds(7, 276, 146, 57);
 		contentPane.add(btnGuardarOperadores);
 		
 		lblNewLabel_5 = new JLabel("Telefono");
@@ -178,6 +181,7 @@ public class frm_Operadores extends JFrame {
 		txtidvehiculo.setColumns(10);
 		
 		JButton btnNewButton = new JButton("DELETE");
+		btnNewButton.setBackground(new Color(0, 255, 0));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -192,7 +196,7 @@ public class frm_Operadores extends JFrame {
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
-		btnNewButton.setBounds(266, 122, 146, 65);
+		btnNewButton.setBounds(266, 122, 146, 51);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_8 = new JLabel("id Operadores");
@@ -203,5 +207,23 @@ public class frm_Operadores extends JFrame {
 		txtidoperadores.setBounds(266, 91, 86, 20);
 		contentPane.add(txtidoperadores);
 		txtidoperadores.setColumns(10);
+		
+		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Operadores op = new Operadores();
+				
+				op.readOne(Integer.parseInt(txtidoperadores.getText()), txtNombre, txtApellido, txtResidencia, txtCorreo, txtTelefono, txtidvehiculo, txtmatricula, txtnumeroDocum);
+				
+		
+				
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(267, 186, 145, 51);
+		contentPane.add(btnbuscar);
 	}
 }

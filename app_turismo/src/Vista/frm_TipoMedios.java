@@ -49,9 +49,9 @@ public class frm_TipoMedios extends JFrame {
 	public frm_TipoMedios() {
 		setTitle("Gestión de Tipos de Medios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 470, 310);
+		setBounds(100, 100, 509, 310);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(156, 204, 226));
+		contentPane.setBackground(new Color(179, 113, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -59,7 +59,7 @@ public class frm_TipoMedios extends JFrame {
 		
 		txtnombre = new JTextField();
 		txtnombre.setFont(new Font("Tahoma", Font.BOLD, 14));
-		txtnombre.setBounds(174, 29, 123, 20);
+		txtnombre.setBounds(147, 29, 123, 20);
 		contentPane.add(txtnombre);
 		txtnombre.setColumns(10);
 		
@@ -75,11 +75,13 @@ public class frm_TipoMedios extends JFrame {
 		
 		txtobservaciontm = new JTextField();
 		txtobservaciontm.setFont(new Font("Tahoma", Font.BOLD, 14));
-		txtobservaciontm.setBounds(174, 73, 153, 69);
+		txtobservaciontm.setBounds(147, 71, 153, 69);
 		contentPane.add(txtobservaciontm);
 		txtobservaciontm.setColumns(10);
 		
 		JButton btnGuardar = new JButton("SAVE");
+		btnGuardar.setForeground(new Color(255, 255, 255));
+		btnGuardar.setBackground(new Color(115, 12, 199));
 		btnGuardar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addActionListener(new ActionListener() {
@@ -103,15 +105,17 @@ public class frm_TipoMedios extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("ID TipoMedios");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel.setBounds(337, 125, 107, 15);
+		lblNewLabel.setBounds(358, 33, 107, 15);
 		contentPane.add(lblNewLabel);
 		
 		txtidtipomed = new JTextField();
-		txtidtipomed.setBounds(358, 153, 86, 20);
+		txtidtipomed.setBounds(358, 52, 86, 20);
 		contentPane.add(txtidtipomed);
 		txtidtipomed.setColumns(10);
 		
 		JButton btnNewButton = new JButton("DELETE");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(115, 12, 199));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -125,7 +129,44 @@ public class frm_TipoMedios extends JFrame {
 		});
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton.setBounds(297, 181, 147, 64);
+		btnNewButton.setBounds(336, 181, 147, 64);
 		contentPane.add(btnNewButton);
+		
+		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				TipoMedios cr = new TipoMedios();
+				
+				cr.readOne(Integer.parseInt(txtidtipomed.getText()), txtnombre, txtobservaciontm);
+				
+	
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(181, 194, 145, 51);
+		contentPane.add(btnbuscar);
+		
+		JButton btntodos = new JButton("ALL");
+		btntodos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TipoMedios cr = new TipoMedios();
+				
+				cr.readAll(Integer.parseInt(txtidtipomed.getText()), 
+						txtnombre.getText(), 
+						txtobservaciontm.getText());
+				
+				txtidtipomed.setText(" ");
+				txtnombre.setText(" ");
+				txtobservaciontm.setText(" ");
+			}
+		});
+		btntodos.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\3669377_clear_all_ic_icon.png"));
+		btntodos.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btntodos.setBounds(320, 96, 146, 43);
+		contentPane.add(btntodos);
 	}
 }

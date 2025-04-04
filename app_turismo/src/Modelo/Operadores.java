@@ -2,9 +2,12 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -163,6 +166,44 @@ public class Operadores {
 
 				pst.executeUpdate();
 				JOptionPane.showConfirmDialog(null, "Registro # " + id + " ELIMINADO");
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+	
+
+	 
+
+	// SEARH - UPDATE
+	public void readOne(int id, JTextField nombres, JTextField apellidos, JTextField direccion,
+			JTextField correo, JTextField telefono, JTextField idvehiculo, JTextField matricula, JTextField numDocumento) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "SELECT * FROM tbl_operadores WHERE id = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+
+			//parametrizar los datos
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+			while (rs.next()) {
+				System.out.println("");
+				nombres.setText(rs.getString(2));
+				apellidos.setText(rs.getString(3));
+				direccion.setText(rs.getString(4));
+				correo.setText(rs.getString(5));
+				telefono.setText(rs.getString(6));
+				idvehiculo.setText(rs.getString(7));
+				matricula.setText(rs.getString(8));
+				numDocumento.setText(rs.getString(9));
+				
 			}
 
 		} catch (SQLException e) {

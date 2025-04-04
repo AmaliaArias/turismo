@@ -31,6 +31,7 @@ public class frm_Compania extends JFrame {
 	private JButton btnNewButton;
 	private JLabel lblNewLabel;
 	private JTextField txtidcompania;
+	private JButton btnbuscar;
 
 	/**
 	 * Launch the application.
@@ -135,11 +136,12 @@ public class frm_Compania extends JFrame {
 		
 		txtobservacion = new JTextField();
 		txtobservacion.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		txtobservacion.setBounds(173, 233, 142, 83);
+		txtobservacion.setBounds(173, 233, 142, 68);
 		contentPane.add(txtobservacion);
 		txtobservacion.setColumns(10);
 		
 		JButton btnGuardarCompania = new JButton("SAVE");
+		btnGuardarCompania.setBackground(new Color(0, 255, 255));
 		btnGuardarCompania.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardarCompania.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnGuardarCompania.addMouseListener(new MouseAdapter() {
@@ -171,6 +173,7 @@ public class frm_Compania extends JFrame {
 		contentPane.add(btnGuardarCompania);
 		
 		btnNewButton = new JButton("DELETE");
+		btnNewButton.setBackground(new Color(0, 255, 255));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -185,17 +188,34 @@ public class frm_Compania extends JFrame {
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
-		btnNewButton.setBounds(269, 118, 155, 65);
+		btnNewButton.setBounds(282, 115, 135, 51);
 		contentPane.add(btnNewButton);
 		
 		lblNewLabel = new JLabel("id Compañias");
-		lblNewLabel.setBounds(300, 64, 91, 14);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblNewLabel.setBounds(300, 64, 117, 20);
 		contentPane.add(lblNewLabel);
 		
 		txtidcompania = new JTextField();
 		txtidcompania.setBounds(300, 89, 86, 20);
 		contentPane.add(txtidcompania);
 		txtidcompania.setColumns(10);
+		
+		btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Compania cm = new Compania();
+				
+				cm.readOne(Integer.parseInt(txtidcompania.getText()), txtRazonSocial, txtdireccion, txtcorreoelectronicocompania, txttelefonocompania, txtfechacreacion, txtpaginaweb, txtobservacion);
+				
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(274, 177, 150, 51);
+		contentPane.add(btnbuscar);
 	}
 
 }

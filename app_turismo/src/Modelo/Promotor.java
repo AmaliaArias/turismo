@@ -2,9 +2,11 @@ package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -20,6 +22,22 @@ public class Promotor {
 	public String correoCorporativo;
 	public String fechaNacimiento;
 	public int telefono;
+	public String contrasena;
+	
+	
+
+	public Promotor(String contrasena) {
+		super();
+		this.contrasena = contrasena;
+	}
+
+	public String getContasena() {
+		return contrasena;
+	}
+
+	public void setContasena(String contasena) {
+		this.contrasena = contasena;
+	}
 
 	public Promotor(String tipoDocumento, int documento, String nombres, String apellidos, String direccion,
 			String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono) {
@@ -110,13 +128,14 @@ public class Promotor {
 		this.telefono = telefono;
 	}
 
+	//CREATE
 	public void create(String tipoDocumento, int documento, String nombres, String apellidos, String direccion,
-			String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono) {
+			String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono, String contrasena) {
 
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
 
-		String script = "INSERT INTO tbl_promotor (tipoDocumento, documento, nombres, apellidos, direccion, correoPersonal, correoCorporativo, fechaNacimiento, telefono) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String script = "INSERT INTO tbl_promotor (tipoDocumento, documento, nombres, apellidos, direccion, correoPersonal, correoCorporativo, fechaNacimiento, telefono, contrasena) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			dbConnection = conector.conectarBD();
@@ -131,6 +150,7 @@ public class Promotor {
 			pst.setString(7, correoCorporativo);
 			pst.setString(8, fechaNacimiento);
 			pst.setInt(9, telefono);
+			pst.setString(10, contrasena);
 
 			pst.executeUpdate();
 			JOptionPane.showConfirmDialog(null, "Registro exitoso");
@@ -142,6 +162,7 @@ public class Promotor {
 
 	}
 
+	//DELETE
 	public void delete(int idPromotor) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -170,4 +191,81 @@ public class Promotor {
 
 	}
 
+	//ALL
+	
+	
+	
+	/*
+	//USER
+	public void controlAcceso( int user, String pass) {
+	
+			Connection dbConnection = null;
+			PreparedStatement pst = null; //PREPARA LA TRANSACCION
+
+			String script = "SELECT * FROM tbl_promotor WHILE documento = ? and contrasena ?";
+
+			try {
+				dbConnection = conector.conectarBD(); //ABRIR LA CONEXION
+				pst = dbConnection.prepareStatement(script); //ABRIR EL BUFFLE
+
+
+				pst.setInt(1, user);
+				pst.setString(2, pass);
+				
+				ResultSet rs = pst.executeQuery(); //ALMACENAMIENTO TEMPORAL 
+
+				while (rs.next()) {
+					//si entra aca es porque hay datos validos
+					JOptionPane.showConfirmDialog(null, "Acceso Permitido");
+				}
+
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+		*/
+	
+	
+	//BUSCAR
+		public void readOne(int idPromotor, JTextField tipoDocumento, JTextField documento, JTextField nombres, 
+				JTextField apellidos, JTextField direccion, JTextField correoPersonal, JTextField correoCorporativo, 
+				JTextField fechaNacimiento, JTextField telefono) {
+			
+			Connection dbConnection = null;
+			PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+			String script = "SELECT * FROM tbl_promotor WHERE idPromotor = ?";
+
+			try {
+				dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+				pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+
+				pst.setInt(1, idPromotor);
+
+				ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+				while (rs.next()) {
+					tipoDocumento.setText(rs.getString(2));
+					documento.setText(rs.getString(3));
+					nombres.setText(rs.getString(4));
+					apellidos.setText(rs.getString(5));
+					direccion.setText(rs.getString(6));
+					correoPersonal.setText(rs.getString(7));
+					correoCorporativo.setText(rs.getString(8));
+					fechaNacimiento.setText(rs.getString(9));
+					telefono.setText(rs.getString(10));
+				
+					
+				}
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+	
+	
+	
 }

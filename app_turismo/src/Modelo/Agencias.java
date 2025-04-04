@@ -3,9 +3,11 @@ package Modelo;
 import java.security.PublicKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import Controlador.Conexion;
 
@@ -109,6 +111,9 @@ public class Agencias {
 		this.idcompanias = idcompanias;
 	}
 
+	
+	
+	//CREATE
 	public void create(String ubicacion, String nombre, String direccion, String correoElectronico, int telefono,
 			String web, String observaciones, int idcompanias) {
 
@@ -138,6 +143,10 @@ public class Agencias {
 
 	}
 
+	
+	
+	
+	// DELETE
 	public void delete(int idAgencia) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -165,4 +174,46 @@ public class Agencias {
 		}
 
 	}
+	
+	
+	
+	
+	//BUSCAR
+	public void readOne(int idAgencia, JTextField ubicacion, JTextField nombre, JTextField direccion,
+			JTextField correoElectronico, JTextField telefono, JTextField web, JTextField observaciones,
+			JTextField idcompanias) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null;
+
+		String script = "SELECT * FROM tbl_agencias WHERE idAgencia = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXIÓN
+			pst = dbConnection.prepareStatement(script); // PREPARAR EL BUFFER
+
+			pst.setInt(1, idAgencia);
+
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+			while (rs.next()) {
+				ubicacion.setText(rs.getString(1));
+				nombre.setText(rs.getString(2));
+				direccion.setText(rs.getString(3));
+				correoElectronico.setText(rs.getString(4));
+				telefono.setText(rs.getString(5));
+				web.setText(rs.getString(6));
+				observaciones.setText(rs.getString(7));
+				idcompanias.setText(rs.getString(8));
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+	//UPDATE 
+	
+	
+
 }

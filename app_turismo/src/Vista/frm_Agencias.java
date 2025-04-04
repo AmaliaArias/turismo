@@ -56,7 +56,7 @@ public class frm_Agencias extends JFrame {
 	public frm_Agencias() {
 		setTitle("Tabla Agencias");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 474, 337);
+		setBounds(100, 100, 474, 418);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(156, 204, 226));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -153,7 +153,7 @@ public class frm_Agencias extends JFrame {
 		txtobservacion.setColumns(10);
 		
 		JButton btnGuardar = new JButton("SAVE");
-		btnGuardar.setBackground(new Color(170, 213, 255));
+		btnGuardar.setBackground(new Color(149, 215, 247));
 		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -185,10 +185,11 @@ public class frm_Agencias extends JFrame {
 				txtidcompania.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(274, 185, 150, 71);
+		btnGuardar.setBounds(36, 297, 150, 71);
 		contentPane.add(btnGuardar);
 		
 		JButton btndelete = new JButton("DELETE");
+		btndelete.setBackground(new Color(149, 215, 247));
 		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -202,16 +203,47 @@ public class frm_Agencias extends JFrame {
 		});
 		btndelete.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
-		btndelete.setBounds(274, 63, 150, 71);
+		btndelete.setBounds(274, 73, 150, 58);
 		contentPane.add(btndelete);
 		
 		JLabel lblNewLabel_8 = new JLabel("id Agencia");
-		lblNewLabel_8.setBounds(314, 21, 78, 14);
+		lblNewLabel_8.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblNewLabel_8.setBounds(314, 21, 78, 19);
 		contentPane.add(lblNewLabel_8);
 		
 		txtidagencia = new JTextField();
-		txtidagencia.setBounds(294, 36, 86, 20);
+		txtidagencia.setBounds(306, 48, 86, 20);
 		contentPane.add(txtidagencia);
 		txtidagencia.setColumns(10);
+		
+		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Agencias ag = new Agencias();
+				ag.readOne(Integer.parseInt(txtidagencia.getText()), txtubicacion, txtnombre, txtdireccion, 
+				              txtcorreo, txttelefono, txtweb, txtobservacion, txtidcompania);
+
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(279, 182, 145, 51);
+		contentPane.add(btnbuscar);
+		
+		JButton btnNewButton = new JButton("UPDATE");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				
+				
+			}
+		});
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton.setBounds(280, 271, 144, 51);
+		contentPane.add(btnNewButton);
 	}
 }

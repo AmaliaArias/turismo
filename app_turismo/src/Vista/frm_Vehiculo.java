@@ -54,7 +54,7 @@ public class frm_Vehiculo extends JFrame {
 	public frm_Vehiculo() {
 		setTitle("Tabla Vehiculo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 465, 421);
+		setBounds(100, 100, 465, 498);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 164));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -199,6 +199,21 @@ public class frm_Vehiculo extends JFrame {
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
 		btnNewButton.setBounds(226, 290, 156, 66);
 		contentPane.add(btnNewButton);
+		
+		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Vehiculo vh = new Vehiculo();
+				
+				vh.readOne(txtMatricula.getText(), txtidtipovh, txtmarca, txtpuestos, txtmodelo, txtnumeromotor, txtcategoria, txtidVehiculo);
+				
+			}
+		});
+		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
+		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnbuscar.setBounds(227, 380, 145, 68);
+		contentPane.add(btnbuscar);
 	}
-
 }
