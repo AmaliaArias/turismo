@@ -90,56 +90,87 @@ public class TipoMedios {
 		}
 
 	}
-	
-	// SEARH - UPDATE
-		public void readOne(int codigo, JTextField nombres, JTextField observacion ) {
-			Connection dbConnection = null;
-			PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
-			String script = "SELECT * FROM tbl_tiposmedios WHERE idTipoMedios = ?";
+	// SEARH
+	public void readOne(int codigo, JTextField nombres, JTextField observacion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
-			try {
-				dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
-				pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+		String script = "SELECT * FROM tbl_tiposmedios WHERE idTipoMedios = ?";
 
-				pst.setInt(1, codigo);
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
 
-				ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+			pst.setInt(1, codigo);
 
-				while (rs.next()) {
-					nombres.setText(rs.getString(2));
-					observacion.setText(rs.getString(3));
-					
-				}
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
 
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+			while (rs.next()) {
+				nombres.setText(rs.getString(2));
+				observacion.setText(rs.getString(3));
+
 			}
 
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
+
+	}
+
+	// ALL
+	// CONSULTAR TODOS LOS REGISTROS DE LA TABLA TIPODEMEDIOS
+	public void readAll(int tipomedios, String nombre, String observacion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "SELECT * FROM tbl_tiposmedios WHERE idTipoMedios = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+			while (rs.next()) {
+				System.out.println(rs.getString(1) + " - " + rs.getString(2) + " - " + rs.getString(3));
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
 	
-		
-		
-		//ALL 
-		//CONSULTAR TODOS LOS REGISTROS DE LA TABLA TIPODEMEDIOS
-		public void readAll (int tipomedios, String nombre, String observacion) {
-			Connection dbConnection = null;
-			PreparedStatement pst = null; //PREPARA LA TRANSACCION
-		 
-		 String script = "SELECT * FROM tbl_tiposmedios WHERE idTipoMedios = ?";
-		 
-		 try { 
-			 dbConnection = conector.conectarBD(); //ABRIR LA CONEXION pst =
-			pst = dbConnection.prepareStatement(script); //ABRIR EL BUFFLE ResultSet rs =
-			ResultSet rs = pst.executeQuery(); //ALMACENAMIENTO TEMPORAL
-		 
-		 while (rs.next()) {
-			 System.out.println(rs.getString(1) + " - " + rs.getString(2) + " - " + rs.getString(3));
-			 
-			 }
-		 
-		
-		 } catch (SQLException e) { System.out.println(e.getMessage()); }
-		 
-		 }
+	
+	//UPDATE
+	public void update(int idTipoMedios, String nombre, String observacion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_tiposmedios SET nombre = ?, observaciones = ? WHERE idTipoMedios = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, nombre);
+			pst.setString(2, observacion);
+			pst.setInt(3, idTipoMedios);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idTipoMedios + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + idTipoMedios + "Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 }

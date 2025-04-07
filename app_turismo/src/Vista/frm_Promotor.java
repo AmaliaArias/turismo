@@ -39,6 +39,7 @@ public class frm_Promotor extends JFrame {
 	private JButton btnNewButton;
 	private JButton btnbuscar;
 	private JTextField txtcontrasena;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -160,7 +161,7 @@ public class frm_Promotor extends JFrame {
 						txttelefono.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(41, 300, 135, 62);
+		btnGuardar.setBounds(41, 300, 135, 57);
 		contentPane.add(btnGuardar);
 		
 		txtnumerod = new JTextField();
@@ -215,10 +216,11 @@ public class frm_Promotor extends JFrame {
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
-		btnNewButton.setBounds(289, 104, 135, 62);
+		btnNewButton.setBounds(289, 104, 135, 51);
 		contentPane.add(btnNewButton);
 		
 		btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(128, 255, 0));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -238,7 +240,47 @@ public class frm_Promotor extends JFrame {
 		txtcontrasena.setText("ESTO NO ES NADA");
 		txtcontrasena.setToolTipText("");
 		txtcontrasena.setColumns(10);
-		txtcontrasena.setBounds(288, 342, 123, 20);
+		txtcontrasena.setBounds(301, 364, 123, 20);
 		contentPane.add(txtcontrasena);
+		
+		btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setBackground(new Color(128, 255, 0));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Promotor pm = new Promotor();
+				
+				pm.update(Integer.parseInt(txtidpromotor.getText()), 
+						txttipodocumento.getText(), 
+						Integer.parseInt(txtnumerod.getText()), 
+						txtnombre.getText(), 
+						txtapellido.getText(), 
+						txtdireccion.getText(), 
+						txtcorreopersonal.getText(), 
+						txtcorreocorpo.getText(), 
+						txtfechanac.getText(), 
+						Integer.parseInt(txttelefono.getText()), 
+						txtcontrasena.getText());
+				 
+				
+				txtidpromotor.setText("  ");
+				txttipodocumento.setText("  ");
+				txtnumerod.setText("  ");
+				txtnombre.setText("  ");
+				txtapellido.setText("  ");
+				txtdireccion.setText("  ");
+				txtcorreopersonal.setText("  ");
+				txtcorreocorpo.setText("  ");
+				txtfechanac.setText("  ");
+				txttelefono.setText("  ");
+				txtcontrasena.setText("  ");
+				
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(269, 285, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 }

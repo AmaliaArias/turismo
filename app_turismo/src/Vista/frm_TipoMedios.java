@@ -49,7 +49,7 @@ public class frm_TipoMedios extends JFrame {
 	public frm_TipoMedios() {
 		setTitle("Gestión de Tipos de Medios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 509, 310);
+		setBounds(100, 100, 509, 388);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(179, 113, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -166,7 +166,26 @@ public class frm_TipoMedios extends JFrame {
 		});
 		btntodos.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\3669377_clear_all_ic_icon.png"));
 		btntodos.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btntodos.setBounds(320, 96, 146, 43);
+		btntodos.setBounds(169, 279, 146, 43);
 		contentPane.add(btntodos);
+		
+		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				TipoMedios cr = new TipoMedios();
+				
+				cr.update(Integer.parseInt(txtidtipomed.getText()), txtnombre.getText(), txtobservaciontm.getText());
+				
+				txtidtipomed.setText(" ");
+				txtnombre.setText(" ");
+				txtobservaciontm.setText(" ");
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(321, 94, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 }

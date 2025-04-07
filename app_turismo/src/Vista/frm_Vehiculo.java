@@ -201,6 +201,7 @@ public class frm_Vehiculo extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(255, 255, 0));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -215,5 +216,39 @@ public class frm_Vehiculo extends JFrame {
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnbuscar.setBounds(227, 380, 145, 68);
 		contentPane.add(btnbuscar);
+		
+		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setBackground(new Color(255, 255, 0));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Vehiculo vh = new Vehiculo();
+				
+				vh.update(txtMatricula.getText(), 
+						txtmarca.getText(), 
+						Integer.parseInt(txtpuestos.getText()), 
+						txtmodelo.getText(), 
+						Integer.parseInt(txtnumeromotor.getText()), 
+						txtcategoria.getText(), 
+						Integer.parseInt(txtidtipovh.getText()),
+						Integer.parseInt(txtidVehiculo.getText()));
+				
+				
+				txtidVehiculo.setText(" ");
+				txtMatricula.setText(" ");
+				txtmarca.setText(" ");
+				txtpuestos.setText(" ");
+				txtmodelo.setText(" ");
+				txtnumeromotor.setText(" ");
+				txtcategoria.setText(" ");
+				txtcategoria.setText(" ");
+				txtidtipovh.setText(" ");
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(31, 380, 144, 68);
+		contentPane.add(btnNewButton_1);
 	}
 }

@@ -133,8 +133,7 @@ public class Vehiculo {
 
 	}
 
-	
-	//DELETE
+	// DELETE
 	public void delete(int id) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -163,37 +162,74 @@ public class Vehiculo {
 
 	}
 
-	// SEARH - UPDATE
-		public void readOne(String matricula, JTextField id,  JTextField marca, JTextField puestos, JTextField modelo, JTextField numeromotor, JTextField categoria,
-				JTextField idtipovehiculo) {
-			Connection dbConnection = null;
-			PreparedStatement pst = null; // PREPARA LA TRANSACCION
+	// SEARH
+	public void readOne(String matricula, JTextField id, JTextField marca, JTextField puestos, JTextField modelo,
+			JTextField numeromotor, JTextField categoria, JTextField idtipovehiculo) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
-			String script = "SELECT * FROM tbl_vehiculo WHERE matricula = ?";
+		String script = "SELECT * FROM tbl_vehiculo WHERE matricula = ?";
 
-			try {
-				dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
-				pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
 
-				pst.setString(1, matricula);
+			pst.setString(1, matricula);
 
-				ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
 
-				while (rs.next()) {
-					
-					marca.setText(rs.getString(2));
-					puestos.setText(rs.getString(3));
-					modelo.setText(rs.getString(4));
-					numeromotor.setText(rs.getString(5));
-					categoria.setText(rs.getString(6));
-					idtipovehiculo.setText(rs.getString(7));
-					id.setText(rs.getString(8));
+			while (rs.next()) {
 
-				}
+				marca.setText(rs.getString(2));
+				puestos.setText(rs.getString(3));
+				modelo.setText(rs.getString(4));
+				numeromotor.setText(rs.getString(5));
+				categoria.setText(rs.getString(6));
+				idtipovehiculo.setText(rs.getString(7));
+				id.setText(rs.getString(8));
 
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
 			}
 
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
+
+	}
+
+	// UPDATE
+	public void update(String matricula, String marca, int puestos, String modelo, int numeromotor,
+			String categoria, int idtipovehiculo, int id) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_vehiculo SET marca = ?, puestos = ?, modelo = ?, numeromotor = ?, categoria = ?, idtipovehiculo = ?, id = ? WHERE matricula  = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			
+			pst.setString(1, marca);
+			pst.setInt(2, puestos);
+			pst.setString(3, modelo);
+			pst.setInt(4, numeromotor);
+			pst.setString(5, categoria);
+			pst.setInt(6, idtipovehiculo);
+			pst.setInt(7, id);
+			pst.setString(8, matricula);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + matricula + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + matricula + " Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 }

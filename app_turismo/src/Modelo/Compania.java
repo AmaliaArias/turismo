@@ -183,4 +183,39 @@ public class Compania {
 
 	}
 
+	// UPDATE
+	public void update(int idcompanias, String razonsocial, String direccion, String correo, int telefono,
+			String fechacreacion, String web, String observacion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_companias SET razonsocial = ?, direccion = ?, correo = ?, telefono = ?, fechacreacion = ?, web = ?, observacion = ?  WHERE idcompanias  = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, razonsocial);
+			pst.setString(2, direccion);
+			pst.setString(3, correo);
+			pst.setInt(4, telefono);
+			pst.setString(5, fechacreacion);
+			pst.setString(6, web);
+			pst.setString(7, observacion);
+			pst.setInt(8, idcompanias);
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idcompanias + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + idcompanias + " Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
 }

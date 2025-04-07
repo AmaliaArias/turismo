@@ -176,5 +176,30 @@ public class frm_Medios extends JFrame {
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnbuscar.setBounds(281, 261, 150, 51);
 		contentPane.add(btnbuscar);
+		
+		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Medios cm = new Medios();
+				
+				cm.update(Integer.parseInt(txtidMedios.getText()), 
+						txtNombreMedios.getText(), 
+						txtObservacionMedio.getText(), 
+						Integer.parseInt(txtidtipomedio.getText()));
+				
+				
+				txtidMedios.setText(" ");
+				txtNombreMedios.setText(" ");
+				txtObservacionMedio.setText(" ");
+				txtidtipomedio.setText(" ");
+				
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(34, 261, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 }

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controlador.Conexion;
+import Vista.frm_Principal;
 
 public class Promotor {
 	Conexion conector = new Conexion();
@@ -23,8 +24,6 @@ public class Promotor {
 	public String fechaNacimiento;
 	public int telefono;
 	public String contrasena;
-	
-	
 
 	public Promotor(String contrasena) {
 		super();
@@ -128,7 +127,7 @@ public class Promotor {
 		this.telefono = telefono;
 	}
 
-	//CREATE
+	// CREATE
 	public void create(String tipoDocumento, int documento, String nombres, String apellidos, String direccion,
 			String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono, String contrasena) {
 
@@ -162,7 +161,7 @@ public class Promotor {
 
 	}
 
-	//DELETE
+	// DELETE
 	public void delete(int idPromotor) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -191,81 +190,115 @@ public class Promotor {
 
 	}
 
-	//ALL
-	
-	
-	
-	/*
-	//USER
-	public void controlAcceso( int user, String pass) {
-	
-			Connection dbConnection = null;
-			PreparedStatement pst = null; //PREPARA LA TRANSACCION
+	// ALL
 
-			String script = "SELECT * FROM tbl_promotor WHILE documento = ? and contrasena ?";
+	// USER
+	public void controlAcceso(int user, String pass) {
 
-			try {
-				dbConnection = conector.conectarBD(); //ABRIR LA CONEXION
-				pst = dbConnection.prepareStatement(script); //ABRIR EL BUFFLE
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
+		String script = "SELECT * FROM tbl_promotor WHERE documento = ? and contrasena = ? ";
 
-				pst.setInt(1, user);
-				pst.setString(2, pass);
-				
-				ResultSet rs = pst.executeQuery(); //ALMACENAMIENTO TEMPORAL 
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
 
-				while (rs.next()) {
-					//si entra aca es porque hay datos validos
-					JOptionPane.showConfirmDialog(null, "Acceso Permitido");
-				}
+			pst.setInt(1, user);
+			pst.setString(2, pass);
 
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
 
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+			while (rs.next()) {
+
+				frm_Principal login = new frm_Principal();
+				login.show();
+				login.setVisible(true);
+
+				// si entra aca es porque hay datos validos
+				JOptionPane.showConfirmDialog(null, "Acceso Permitido");
 			}
 
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
-		*/
-	
-	
-	//BUSCAR
-		public void readOne(int idPromotor, JTextField tipoDocumento, JTextField documento, JTextField nombres, 
-				JTextField apellidos, JTextField direccion, JTextField correoPersonal, JTextField correoCorporativo, 
-				JTextField fechaNacimiento, JTextField telefono) {
-			
-			Connection dbConnection = null;
-			PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
-			String script = "SELECT * FROM tbl_promotor WHERE idPromotor = ?";
+	}
 
-			try {
-				dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
-				pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+	// BUSCAR
+	public void readOne(int idPromotor, JTextField tipoDocumento, JTextField documento, JTextField nombres,
+			JTextField apellidos, JTextField direccion, JTextField correoPersonal, JTextField correoCorporativo,
+			JTextField fechaNacimiento, JTextField telefono) {
 
-				pst.setInt(1, idPromotor);
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
-				ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+		String script = "SELECT * FROM tbl_promotor WHERE idPromotor = ?";
 
-				while (rs.next()) {
-					tipoDocumento.setText(rs.getString(2));
-					documento.setText(rs.getString(3));
-					nombres.setText(rs.getString(4));
-					apellidos.setText(rs.getString(5));
-					direccion.setText(rs.getString(6));
-					correoPersonal.setText(rs.getString(7));
-					correoCorporativo.setText(rs.getString(8));
-					fechaNacimiento.setText(rs.getString(9));
-					telefono.setText(rs.getString(10));
-				
-					
-				}
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
 
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+			pst.setInt(1, idPromotor);
+
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+
+			while (rs.next()) {
+				tipoDocumento.setText(rs.getString(2));
+				documento.setText(rs.getString(3));
+				nombres.setText(rs.getString(4));
+				apellidos.setText(rs.getString(5));
+				direccion.setText(rs.getString(6));
+				correoPersonal.setText(rs.getString(7));
+				correoCorporativo.setText(rs.getString(8));
+				fechaNacimiento.setText(rs.getString(9));
+				telefono.setText(rs.getString(10));
+
 			}
 
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
-	
-	
-	
+
+	}
+
+	// UPDATE
+	public void update(int idPromotor, String tipoDocumento, int documento, String nombres, String apellidos,
+			String direccion, String correoPersonal, String correoCorporativo, String fechaNacimiento, int telefono,
+			String contrasena) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_promotor SET tipoDocumento = ?, documento = ?, nombres = ?, apellidos = ?, direccion = ?, correoPersonal = ?, correoCorporativo = ?, fechaNacimiento = ?, telefono = ?, contrasena = ? WHERE idPromotor  = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, tipoDocumento);
+			pst.setInt(2, documento);
+			pst.setString(3, nombres);
+			pst.setString(4, apellidos);
+			pst.setString(5, direccion);
+			pst.setString(6, correoPersonal);
+			pst.setString(7, correoCorporativo);
+			pst.setString(8, fechaNacimiento);
+			pst.setInt(9, telefono);
+			pst.setString(10, contrasena);
+			pst.setInt(11, idPromotor);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idPromotor + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + idPromotor + " Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 }

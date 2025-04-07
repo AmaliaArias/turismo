@@ -185,7 +185,7 @@ public class frm_Agencias extends JFrame {
 				txtidcompania.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(36, 297, 150, 71);
+		btnGuardar.setBounds(274, 308, 150, 60);
 		contentPane.add(btnGuardar);
 		
 		JButton btndelete = new JButton("DELETE");
@@ -203,7 +203,7 @@ public class frm_Agencias extends JFrame {
 		});
 		btndelete.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btndelete.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
-		btndelete.setBounds(274, 73, 150, 58);
+		btndelete.setBounds(274, 73, 150, 51);
 		contentPane.add(btndelete);
 		
 		JLabel lblNewLabel_8 = new JLabel("id Agencia");
@@ -229,21 +229,41 @@ public class frm_Agencias extends JFrame {
 		});
 		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnbuscar.setBounds(279, 182, 145, 51);
+		btnbuscar.setBounds(274, 154, 145, 51);
 		contentPane.add(btnbuscar);
 		
 		JButton btnNewButton = new JButton("UPDATE");
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				Agencias ag = new Agencias();
 				
+				ag.update(Integer.parseInt(txtidagencia.getText()),
+						txtubicacion.getText(), 
+						txtnombre.getText(), 
+						txtdireccion.getText(),
+						txtcorreo.getText(),
+						Integer.parseInt(txttelefono.getText()), 
+						txtweb.getText(), 
+						txtobservacion.getText(), 
+						Integer.parseInt(txtidcompania.getText()));
 				
+				txtidagencia.setText(" ");
+				txtubicacion.setText(" ");
+				txtnombre.setText(" ");
+				txtdireccion.setText(" ");
+				txtcorreo.setText(" ");
+				txttelefono.setText(" ");
+				txtweb.setText(" ");
+				txtobservacion.setText(" ");
+				txtidcompania.setText(" ");
 				
 			}
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton.setBounds(280, 271, 144, 51);
+		btnNewButton.setBounds(274, 238, 144, 51);
 		contentPane.add(btnNewButton);
 	}
 }

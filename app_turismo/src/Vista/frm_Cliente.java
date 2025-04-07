@@ -278,5 +278,45 @@ public class frm_Cliente extends JFrame {
 		lblNumeroDocumento.setFont(new Font("Times New Roman", Font.BOLD, 13));
 		lblNumeroDocumento.setBounds(10, 54, 123, 14);
 		contentPane.add(lblNumeroDocumento);
+		
+		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Cliente cm = new Cliente();
+				
+				cm.update(Integer.parseInt(txtidcliente.getText()), 
+						txttipodocumen.getText(), 
+						Integer.parseInt(txtdocumento.getText()), 
+						txtNombres.getText(), 
+						txtapellidos.getText(), 
+						txteps.getText(), 
+						txtalegias.getText(), 
+						txtfechanacimiento.getText(), 
+						txtcorreo.getText(), 
+						txtestadocivil.getText(), 
+						Integer.parseInt(txttelefono.getText()), 
+						txtdireccion.getText());
+				
+				
+				txtidcliente.setText(" ");
+				txttipodocumen.setText(" ");
+				txtdocumento.setText(" ");
+				txtNombres.setText(" ");
+				txtapellidos.setText(" ");
+				txteps.setText(" ");
+				txtalegias.setText(" ");
+				txtfechanacimiento.setText(" ");
+				txtcorreo.setText(" ");
+				txtestadocivil.setText(" ");
+				txttelefono.setText(" ");
+				txtdireccion.setText(" ");
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(260, 372, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 }

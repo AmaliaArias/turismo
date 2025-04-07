@@ -32,6 +32,7 @@ public class frm_Compania extends JFrame {
 	private JLabel lblNewLabel;
 	private JTextField txtidcompania;
 	private JButton btnbuscar;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -216,6 +217,39 @@ public class frm_Compania extends JFrame {
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnbuscar.setBounds(274, 177, 150, 51);
 		contentPane.add(btnbuscar);
+		
+		btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Compania cm = new Compania();
+				
+				cm.update(Integer.parseInt(txtidcompania.getText()), 
+						txtRazonSocial.getText(), 
+						txtdireccion.getText(), 
+						txtcorreoelectronicocompania.getText(), 
+						Integer.parseInt(txttelefonocompania.getText()), 
+						txtfechacreacion.getText(), 
+						txtpaginaweb.getText(), 
+						txtobservacion.getText());
+				
+				
+				txtidcompania.setText(" ");
+				txtRazonSocial.setText(" ");
+				txtdireccion.setText(" ");
+				txtcorreoelectronicocompania.setText(" ");
+				txttelefonocompania.setText(" ");
+				txtfechacreacion.setText(" ");
+				txtpaginaweb.setText(" ");
+				txtobservacion.setText(" ");
+	
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(256, 326, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 
 }

@@ -108,12 +108,12 @@ public class frm_TipoVehiculo extends JFrame {
 		
 		JLabel lblIdTipovehiculo = new JLabel("ID TipoVehiculo");
 		lblIdTipovehiculo.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblIdTipovehiculo.setBounds(311, 96, 107, 15);
+		lblIdTipovehiculo.setBounds(311, 38, 107, 15);
 		contentPane.add(lblIdTipovehiculo);
 		
 		txtidtipovehi = new JTextField();
 		txtidtipovehi.setColumns(10);
-		txtidtipovehi.setBounds(311, 122, 86, 20);
+		txtidtipovehi.setBounds(307, 80, 86, 20);
 		contentPane.add(txtidtipovehi);
 		
 		JButton btnNewButton = new JButton("DELETE");
@@ -149,6 +149,26 @@ public class frm_TipoVehiculo extends JFrame {
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnbuscar.setBounds(152, 199, 150, 51);
 		contentPane.add(btnbuscar);
+		
+		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				TipoVehiculo cr = new TipoVehiculo();
+				
+				cr.update(Integer.parseInt(txtidtipovehi.getText()), txtnombretv.getText(), txtobservaciontv.getText());
+				
+				txtidtipovehi.setText(" ");
+				txtnombretv.setText(" ");
+				txtobservaciontv.setText(" ");
+				
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(299, 123, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 
 }

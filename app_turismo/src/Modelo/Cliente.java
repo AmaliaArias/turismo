@@ -132,9 +132,7 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
-	
-	
-	//CREATE
+	// CREATE
 	public void create(String tipoDocumento, int documento, String nombres, String apellidos, String eps,
 			String alergias, String fechaNacimiento, String correo, String estadocivil, int telefono,
 			String direccion) {
@@ -169,9 +167,7 @@ public class Cliente {
 
 	}
 
-	
-	
-	//DELETE
+	// DELETE
 	public void delete(int idclientes) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -199,12 +195,11 @@ public class Cliente {
 		}
 
 	}
-	
-	
-	//BUSCAR
-	public void readOne(int idclientes, JTextField tipoDocumento, JTextField documento, JTextField nombres, JTextField apellidos, JTextField eps,
-			JTextField alergias, JTextField fechaNacimiento, JTextField correo, JTextField estadocivil, JTextField telefono,
-			JTextField direccion) {
+
+	// BUSCAR
+	public void readOne(int idclientes, JTextField tipoDocumento, JTextField documento, JTextField nombres,
+			JTextField apellidos, JTextField eps, JTextField alergias, JTextField fechaNacimiento, JTextField correo,
+			JTextField estadocivil, JTextField telefono, JTextField direccion) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
@@ -239,5 +234,45 @@ public class Cliente {
 
 	}
 
+	// UPDATE
+	public void update(int idclientes, String tipoDocumento, int documento, String nombres, String apellidos,
+			String eps, String alergias, String fechaNacimiento, String correo, String estadocivil, int telefono,
+			String direccion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_clientes SET tipoDocumento = ?, documento = ?, nombres = ?, apellidos = ?, eps = ?, alergias = ?, fechaNacimiento = ?, correo = ?, estadocivil = ?, telefono = ?, direccion = ? WHERE idclientes  = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, tipoDocumento);
+			pst.setInt(2, documento);
+			pst.setString(3, nombres);
+			pst.setString(4, apellidos);
+			pst.setString(5, eps);
+			pst.setString(6, alergias);
+			pst.setString(7, fechaNacimiento);
+			pst.setString(8, correo);
+			pst.setString(9, estadocivil);
+			pst.setInt(10, telefono);
+			pst.setString(11, direccion);
+			pst.setInt(12, idclientes);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idclientes + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + idclientes + " Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 
 }

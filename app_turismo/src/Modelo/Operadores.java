@@ -173,13 +173,10 @@ public class Operadores {
 		}
 
 	}
-	
 
-	 
-
-	// SEARH - UPDATE
-	public void readOne(int id, JTextField nombres, JTextField apellidos, JTextField direccion,
-			JTextField correo, JTextField telefono, JTextField idvehiculo, JTextField matricula, JTextField numDocumento) {
+	// SEARH
+	public void readOne(int id, JTextField nombres, JTextField apellidos, JTextField direccion, JTextField correo,
+			JTextField telefono, JTextField idvehiculo, JTextField matricula, JTextField numDocumento) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
@@ -189,7 +186,7 @@ public class Operadores {
 			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
 			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
 
-			//parametrizar los datos
+			// parametrizar los datos
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
 
@@ -203,7 +200,44 @@ public class Operadores {
 				idvehiculo.setText(rs.getString(7));
 				matricula.setText(rs.getString(8));
 				numDocumento.setText(rs.getString(9));
-				
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	// UPDATE
+	public void update(int id, String nombres, String apellidos, String direccion, String correo, int telefono,
+			int idvehiculo, String matricula, int numDocumento) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_operadores SET nombres = ?, apellidos = ?, direccion = ?, correo = ?, telefono = ?, idvehiculo = ?, matricula = ?, numDocumento = ? WHERE id  = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, nombres);
+			pst.setString(2, apellidos);
+			pst.setString(3, direccion);
+			pst.setString(4, correo);
+			pst.setInt(5, telefono);
+			pst.setInt(6, idvehiculo);
+			pst.setString(7, matricula);
+			pst.setInt(8, numDocumento);
+			pst.setInt(9, id);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + id + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + id + " Actualizado");
+
 			}
 
 		} catch (SQLException e) {

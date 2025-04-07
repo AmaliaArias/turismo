@@ -96,7 +96,7 @@ public class TipoVehiculo {
 
 	}
 
-	// SEARH - UPDATE
+	// SEARH 
 	public void readOne(int codigo, JTextField nombres, JTextField observacion) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null; // PREPARA LA TRANSACCION
@@ -123,4 +123,34 @@ public class TipoVehiculo {
 
 	}
 
+	
+	//UPDATE
+	public void update(int idtipovehiculo, String nombre, String observacion) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_tipovehiculo SET nombre = ?, observación = ? WHERE idtipovehiculo  = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, nombre);
+			pst.setString(2, observacion);
+			pst.setInt(3, idtipovehiculo);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idtipovehiculo + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + idtipovehiculo + " Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 }

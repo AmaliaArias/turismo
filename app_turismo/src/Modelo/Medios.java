@@ -80,6 +80,7 @@ public class Medios {
 
 	}
 
+	// DELETE
 	public void delete(int idMedios) {
 		Connection dbConnection = null;
 		PreparedStatement pst = null;
@@ -107,33 +108,66 @@ public class Medios {
 		}
 
 	}
-	
-	
-	//BUSCAR
-			public void readOne(int idMedios, JTextField nombre, JTextField observaciones, JTextField idTipoMedios) {
-				Connection dbConnection = null;
-				PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
-				String script = "SELECT * FROM tbl_medios WHERE idMedios = ?";
+	// BUSCAR
+	public void readOne(int idMedios, JTextField nombre, JTextField observaciones, JTextField idTipoMedios) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
 
-				try {
-					dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
-					pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
+		String script = "SELECT * FROM tbl_medios WHERE idMedios = ?";
 
-					pst.setInt(1, idMedios);
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE
 
-					ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
+			pst.setInt(1, idMedios);
 
-					while (rs.next()) {
-						nombre.setText(rs.getString(2));
-						observaciones.setText(rs.getString(3));
-						idTipoMedios.setText(rs.getString(4));
-						
-					}
+			ResultSet rs = pst.executeQuery(); // ALMACENAMIENTO TEMPORAL
 
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}
+			while (rs.next()) {
+				nombre.setText(rs.getString(2));
+				observaciones.setText(rs.getString(3));
+				idTipoMedios.setText(rs.getString(4));
 
 			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+	
+	
+	
+
+	//UPDATE
+	public void update(int idMedios, String nombre, String observaciones, int idTipoMedios) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_medios SET nombre = ?, observaciones = ?, idTipoMedios = ? WHERE idMedios = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, nombre);
+			pst.setString(2, observaciones);
+			pst.setInt(3, idTipoMedios);
+			pst.setInt(4, idMedios);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idMedios + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + idMedios + "Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 }

@@ -60,7 +60,7 @@ public class frm_paquetes extends JFrame {
 	public frm_paquetes() {
 		setTitle("Paquete Turismo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 389, 619);
+		setBounds(100, 100, 389, 697);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(238, 240, 142));
 		contentPane.setForeground(Color.WHITE);
@@ -276,6 +276,7 @@ public class frm_paquetes extends JFrame {
 		txtcodigo.setColumns(10);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(255, 255, 0));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -291,5 +292,49 @@ public class frm_paquetes extends JFrame {
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnbuscar.setBounds(25, 526, 150, 51);
 		contentPane.add(btnbuscar);
+		
+		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setBackground(new Color(255, 255, 0));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Paquetes pq = new Paquetes();
+				
+				pq.update(Integer.parseInt(txtcodigo.getText()),
+						Integer.parseInt(txtIDDestino.getText()), 
+						Integer.parseInt(txtIDOrigen.getText()), 
+						txtFechaVenta.getText(), 
+						txtHoraVenta.getText(), 
+						txtFechaSalida.getText(), 
+						txtHoraSalida.getText(), 
+						txtObservaciones.getText(), 
+						Integer.parseInt(txtidmedios.getText()), 
+						txtMatricula.getText(), 
+						Integer.parseInt(txtidpromotor.getText()), 
+						Float.valueOf(txtPrecio.getText()),
+						Integer.parseInt(txtidagencia.getText()));
+				
+				
+				txtIDDestino.setText(" ");
+				txtIDOrigen.setText(" ");
+				txtFechaVenta.setText(" ");
+				txtHoraVenta.setText(" ");
+				txtFechaSalida.setText(" ");
+				txtHoraSalida.setText(" ");
+				txtObservaciones.setText(" ");
+				txtidmedios.setText(" ");
+				txtMatricula.setText(" ");
+				txtidpromotor.setText(" ");
+				txtPrecio.setText(" ");
+				txtidagencia.setText(" ");
+				txtcodigo.setText(" ");
+				
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(115, 596, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 }

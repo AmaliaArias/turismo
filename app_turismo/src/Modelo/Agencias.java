@@ -111,9 +111,7 @@ public class Agencias {
 		this.idcompanias = idcompanias;
 	}
 
-	
-	
-	//CREATE
+	// CREATE
 	public void create(String ubicacion, String nombre, String direccion, String correoElectronico, int telefono,
 			String web, String observaciones, int idcompanias) {
 
@@ -143,9 +141,6 @@ public class Agencias {
 
 	}
 
-	
-	
-	
 	// DELETE
 	public void delete(int idAgencia) {
 		Connection dbConnection = null;
@@ -174,11 +169,8 @@ public class Agencias {
 		}
 
 	}
-	
-	
-	
-	
-	//BUSCAR
+
+	// BUSCAR
 	public void readOne(int idAgencia, JTextField ubicacion, JTextField nombre, JTextField direccion,
 			JTextField correoElectronico, JTextField telefono, JTextField web, JTextField observaciones,
 			JTextField idcompanias) {
@@ -210,10 +202,42 @@ public class Agencias {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	
-	//UPDATE 
-	
-	
+
+	// UPDATE
+	public void update(int idAgencia, String ubicacion, String nombre, String direccion, String correoElectronico,
+			int telefono, String web, String observaciones, int idcompanias) {
+		Connection dbConnection = null;
+		PreparedStatement pst = null; // PREPARA LA TRANSACCION
+
+		String script = "UPDATE tbl_agencias SET ubicación = ?, nombre = ?, direccion = ?, correoElectronico = ?, telefono = ?, web = ?, observacion = ?, idcompanias = ? WHERE idAgencia  = ?";
+
+		try {
+			dbConnection = conector.conectarBD(); // ABRIR LA CONEXION pst =
+			pst = dbConnection.prepareStatement(script); // ABRIR EL BUFFLE ResultSet rs =
+
+			pst.setString(1, ubicacion);
+			pst.setString(2, nombre);
+			pst.setString(3, direccion);
+			pst.setString(4, correoElectronico);
+			pst.setInt(5, telefono);
+			pst.setString(6, web);
+			pst.setString(7, observaciones);
+			pst.setInt(8, idcompanias);
+			pst.setInt(9, idAgencia);
+
+			int resp = JOptionPane.showConfirmDialog(null, "¿Desea actualizar el registro No. " + idAgencia + "?");
+
+			if (resp == JOptionPane.YES_OPTION) {
+				pst.execute();
+
+				JOptionPane.showConfirmDialog(null, "Registro No. " + idAgencia + " Actualizado");
+
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
 
 }

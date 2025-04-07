@@ -35,6 +35,7 @@ public class frm_Operadores extends JFrame {
 	private JLabel lblNewLabel_7;
 	private JTextField txtidvehiculo;
 	private JTextField txtidoperadores;
+	private JButton btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -124,7 +125,7 @@ public class frm_Operadores extends JFrame {
 		txtCorreo.setColumns(10);
 		
 		JButton btnGuardarOperadores = new JButton("SAVE");
-		btnGuardarOperadores.setBackground(new Color(0, 255, 0));
+		btnGuardarOperadores.setBackground(new Color(0, 255, 64));
 		btnGuardarOperadores.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnGuardarOperadores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardarOperadores.addMouseListener(new MouseAdapter() {
@@ -181,7 +182,7 @@ public class frm_Operadores extends JFrame {
 		txtidvehiculo.setColumns(10);
 		
 		JButton btnNewButton = new JButton("DELETE");
-		btnNewButton.setBackground(new Color(0, 255, 0));
+		btnNewButton.setBackground(new Color(0, 255, 64));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -209,6 +210,7 @@ public class frm_Operadores extends JFrame {
 		txtidoperadores.setColumns(10);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(0, 255, 64));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -225,5 +227,40 @@ public class frm_Operadores extends JFrame {
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnbuscar.setBounds(267, 186, 145, 51);
 		contentPane.add(btnbuscar);
+		
+		btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setBackground(new Color(0, 255, 64));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Operadores op = new Operadores();
+				
+				op.update(Integer.parseInt(txtidoperadores.getText()), 
+						txtNombre.getText(),
+						txtApellido.getText(),
+						txtResidencia.getText(),
+						txtCorreo.getText(),
+						Integer.parseInt(txtTelefono.getText()),
+						Integer.parseInt(txtidvehiculo.getText()),
+						txtmatricula.getText(),
+						Integer.parseInt(txtnumeroDocum.getText()));
+				
+				
+				txtidoperadores.setText(" ");
+				txtNombre.setText(" ");
+				txtApellido.setText(" ");
+				txtResidencia.setText(" ");
+				txtTelefono.setText(" ");
+				txtidvehiculo.setText(" ");
+				txtmatricula.setText(" ");
+				txtnumeroDocum.setText(" ");
+				
+			}
+		});
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setBounds(268, 263, 144, 51);
+		contentPane.add(btnNewButton_1);
 	}
 }
