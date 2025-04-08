@@ -115,11 +115,5 @@ public class frm_Principal extends JFrame {
 		txtpass.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		txtpass.setBounds(238, 116, 116, 31);
 		contentPane.add(txtpass);
-		
-		JTextPane textPane = new JTextPane();
-		textPane.setEditable(false);
-		textPane.setText("125754751");
-		textPane.setBounds(10, 230, 71, 20);
-		contentPane.add(textPane);
 	}
 }

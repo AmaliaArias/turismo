@@ -25,6 +25,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 public class frm_icon extends JFrame {
 
@@ -53,7 +55,7 @@ public class frm_icon extends JFrame {
 	public frm_icon() {
 		setTitle("Turismo Magdalena");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 476, 540);
+		setBounds(100, 100, 476, 574);
 		contentPane = 
 				new JPanel();
 		contentPane.setBackground(new Color(159, 255, 255));
@@ -88,7 +90,7 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btnagencia.setBounds(259, 26, 161, 60);
+		btnagencia.setBounds(254, 71, 161, 60);
 		contentPane.add(btnagencia);
 		
 		JButton btncliente = new JButton("CLIENTE");
@@ -110,7 +112,7 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btncliente.setBounds(33, 123, 161, 60);
+		btncliente.setBounds(28, 168, 161, 60);
 		contentPane.add(btncliente);
 		
 		JButton btncompania = new JButton("COMPAÑIA");
@@ -126,7 +128,7 @@ public class frm_icon extends JFrame {
 				compania.setVisible(true);
 			}
 		});
-		btncompania.setBounds(33, 26, 166, 60);
+		btncompania.setBounds(28, 71, 166, 60);
 		contentPane.add(btncompania);
 		
 		JButton btnmedios = new JButton("MEDIOS");
@@ -145,7 +147,7 @@ public class frm_icon extends JFrame {
 		});
 		
 		
-		btnmedios.setBounds(259, 217, 166, 60);
+		btnmedios.setBounds(254, 262, 166, 60);
 		contentPane.add(btnmedios);
 		
 		JButton btnoperadores = new JButton("OPERADOR");
@@ -161,7 +163,7 @@ public class frm_icon extends JFrame {
 				operadores.setVisible(true);
 			}
 		});
-		btnoperadores.setBounds(259, 310, 166, 66);
+		btnoperadores.setBounds(254, 355, 166, 66);
 		contentPane.add(btnoperadores);
 		
 		JButton btnpaquetes = new JButton("PAQUETES");
@@ -178,7 +180,7 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btnpaquetes.setBounds(259, 123, 161, 60);
+		btnpaquetes.setBounds(254, 168, 161, 60);
 		contentPane.add(btnpaquetes);
 		
 		JButton btnpromotor = new JButton("PROMOTOR");
@@ -195,7 +197,7 @@ public class frm_icon extends JFrame {
 			
 			}
 		});
-		btnpromotor.setBounds(33, 310, 179, 66);
+		btnpromotor.setBounds(28, 355, 179, 66);
 		contentPane.add(btnpromotor);
 		
 		JButton btntipomed = new JButton("T. MEDIOS");
@@ -212,7 +214,7 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btntipomed.setBounds(33, 217, 161, 60);
+		btntipomed.setBounds(28, 262, 161, 60);
 		contentPane.add(btntipomed);
 		
 		JButton btntipovehic = new JButton("T. VEHICULO");
@@ -230,7 +232,7 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btntipovehic.setBounds(259, 417, 179, 55);
+		btntipovehic.setBounds(254, 462, 179, 55);
 		contentPane.add(btntipovehic);
 		
 		JButton btnvehiculo = new JButton("VEHICULO");
@@ -247,8 +249,12 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btnvehiculo.setBounds(31, 415, 163, 57);
+		btnvehiculo.setBounds(26, 460, 163, 57);
 		contentPane.add(btnvehiculo);
+		
+		JLabel lblNewLabel = new JLabel("CONTENIDO");
+		lblNewLabel.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		lblNewLabel.setBounds(168, 23, 153, 23);
+		contentPane.add(lblNewLabel);
 	}
-
 }
