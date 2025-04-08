@@ -22,6 +22,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class frm_icon extends JFrame {
 
@@ -48,10 +51,12 @@ public class frm_icon extends JFrame {
 	 * Create the frame.
 	 */
 	public frm_icon() {
+		setTitle("Turismo Magdalena");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 476, 540);
 		contentPane = 
 				new JPanel();
+		contentPane.setBackground(new Color(159, 255, 255));
 		contentPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -62,7 +67,10 @@ public class frm_icon extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnagencia = new JButton("AGENCIA");
+		JButton btnagencia = new JButton("AGENCY");
+		btnagencia.setBackground(new Color(196, 255, 255));
+		btnagencia.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\290144_building_office_finance buildings_icon.png"));
+		btnagencia.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnagencia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 		
@@ -80,10 +88,13 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btnagencia.setBounds(20, 26, 89, 23);
+		btnagencia.setBounds(259, 26, 161, 60);
 		contentPane.add(btnagencia);
 		
 		JButton btncliente = new JButton("CLIENTE");
+		btncliente.setBackground(new Color(196, 255, 255));
+		btncliente.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\1564534_customer_man_user_account_profile_icon.png"));
+		btncliente.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btncliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -99,10 +110,13 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btncliente.setBounds(142, 26, 89, 23);
+		btncliente.setBounds(33, 123, 161, 60);
 		contentPane.add(btncliente);
 		
 		JButton btncompania = new JButton("COMPAÑIA");
+		btncompania.setBackground(new Color(196, 255, 255));
+		btncompania.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\7067453_building_office_property_icon.png"));
+		btncompania.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btncompania.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -112,10 +126,13 @@ public class frm_icon extends JFrame {
 				compania.setVisible(true);
 			}
 		});
-		btncompania.setBounds(262, 26, 89, 23);
+		btncompania.setBounds(33, 26, 166, 60);
 		contentPane.add(btncompania);
 		
 		JButton btnmedios = new JButton("MEDIOS");
+		btnmedios.setBackground(new Color(196, 255, 255));
+		btnmedios.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\290136_communication_internet_media_news_newspaper_icon.png"));
+		btnmedios.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnmedios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -128,10 +145,13 @@ public class frm_icon extends JFrame {
 		});
 		
 		
-		btnmedios.setBounds(20, 97, 89, 23);
+		btnmedios.setBounds(259, 217, 166, 60);
 		contentPane.add(btnmedios);
 		
-		JButton btnoperadores = new JButton("OPERADORES");
+		JButton btnoperadores = new JButton("OPERADOR");
+		btnoperadores.setBackground(new Color(196, 255, 255));
+		btnoperadores.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\7019499_operator_costumer_admin_ecommerce_business_icon.png"));
+		btnoperadores.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnoperadores.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -141,10 +161,13 @@ public class frm_icon extends JFrame {
 				operadores.setVisible(true);
 			}
 		});
-		btnoperadores.setBounds(142, 97, 101, 23);
+		btnoperadores.setBounds(259, 310, 166, 66);
 		contentPane.add(btnoperadores);
 		
 		JButton btnpaquetes = new JButton("PAQUETES");
+		btnpaquetes.setBackground(new Color(196, 255, 255));
+		btnpaquetes.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\9057046_gift_icon.png"));
+		btnpaquetes.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnpaquetes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -155,10 +178,13 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btnpaquetes.setBounds(276, 97, 89, 23);
+		btnpaquetes.setBounds(259, 123, 161, 60);
 		contentPane.add(btnpaquetes);
 		
 		JButton btnpromotor = new JButton("PROMOTOR");
+		btnpromotor.setBackground(new Color(196, 255, 255));
+		btnpromotor.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8673598_ic_fluent_people_money_filled_icon.png"));
+		btnpromotor.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnpromotor.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -169,10 +195,13 @@ public class frm_icon extends JFrame {
 			
 			}
 		});
-		btnpromotor.setBounds(20, 160, 112, 23);
+		btnpromotor.setBounds(33, 310, 179, 66);
 		contentPane.add(btnpromotor);
 		
-		JButton btntipomed = new JButton("TIPO MEDIOS");
+		JButton btntipomed = new JButton("T. MEDIOS");
+		btntipomed.setBackground(new Color(196, 255, 255));
+		btntipomed.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2559814_google_media_network_plus_social_icon.png"));
+		btntipomed.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btntipomed.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -183,10 +212,13 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btntipomed.setBounds(142, 160, 101, 23);
+		btntipomed.setBounds(33, 217, 161, 60);
 		contentPane.add(btntipomed);
 		
-		JButton btntipovehic = new JButton("TIPO VEHICULO");
+		JButton btntipovehic = new JButton("T. VEHICULO");
+		btntipovehic.setBackground(new Color(196, 255, 255));
+		btntipovehic.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\3671652_anchor_icon.png"));
+		btntipovehic.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btntipovehic.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -198,10 +230,13 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btntipovehic.setBounds(276, 160, 112, 23);
+		btntipovehic.setBounds(259, 417, 179, 55);
 		contentPane.add(btntipovehic);
 		
 		JButton btnvehiculo = new JButton("VEHICULO");
+		btnvehiculo.setBackground(new Color(196, 255, 255));
+		btnvehiculo.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8541772_car_transport_icon.png"));
+		btnvehiculo.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnvehiculo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -212,7 +247,7 @@ public class frm_icon extends JFrame {
 				
 			}
 		});
-		btnvehiculo.setBounds(20, 227, 89, 23);
+		btnvehiculo.setBounds(31, 415, 163, 57);
 		contentPane.add(btnvehiculo);
 	}
 

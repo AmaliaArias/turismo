@@ -52,7 +52,7 @@ public class frm_TipoVehiculo extends JFrame {
 	public frm_TipoVehiculo() {
 		setTitle("Tipo de Vehiculos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 469, 300);
+		setBounds(100, 100, 469, 357);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 188, 121));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -135,6 +135,7 @@ public class frm_TipoVehiculo extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(255, 128, 0));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -151,6 +152,7 @@ public class frm_TipoVehiculo extends JFrame {
 		contentPane.add(btnbuscar);
 		
 		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setBackground(new Color(255, 128, 0));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -169,6 +171,22 @@ public class frm_TipoVehiculo extends JFrame {
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton_1.setBounds(299, 123, 144, 51);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+				
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(7, 264, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 
 }

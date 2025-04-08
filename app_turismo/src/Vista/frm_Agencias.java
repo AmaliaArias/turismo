@@ -153,7 +153,7 @@ public class frm_Agencias extends JFrame {
 		txtobservacion.setColumns(10);
 		
 		JButton btnGuardar = new JButton("SAVE");
-		btnGuardar.setBackground(new Color(149, 215, 247));
+		btnGuardar.setBackground(new Color(145, 200, 255));
 		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -189,7 +189,7 @@ public class frm_Agencias extends JFrame {
 		contentPane.add(btnGuardar);
 		
 		JButton btndelete = new JButton("DELETE");
-		btndelete.setBackground(new Color(149, 215, 247));
+		btndelete.setBackground(new Color(145, 200, 255));
 		btndelete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -208,15 +208,16 @@ public class frm_Agencias extends JFrame {
 		
 		JLabel lblNewLabel_8 = new JLabel("id Agencia");
 		lblNewLabel_8.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		lblNewLabel_8.setBounds(314, 21, 78, 19);
+		lblNewLabel_8.setBounds(279, 11, 78, 19);
 		contentPane.add(lblNewLabel_8);
 		
 		txtidagencia = new JTextField();
-		txtidagencia.setBounds(306, 48, 86, 20);
+		txtidagencia.setBounds(271, 41, 86, 20);
 		contentPane.add(txtidagencia);
 		txtidagencia.setColumns(10);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(145, 200, 255));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -233,6 +234,7 @@ public class frm_Agencias extends JFrame {
 		contentPane.add(btnbuscar);
 		
 		JButton btnNewButton = new JButton("UPDATE");
+		btnNewButton.setBackground(new Color(145, 200, 255));
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -265,5 +267,21 @@ public class frm_Agencias extends JFrame {
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton.setBounds(274, 238, 144, 51);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("BACK");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+			}
+		});
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1.setBounds(10, 322, 145, 46);
+		contentPane.add(btnNewButton_1);
 	}
 }

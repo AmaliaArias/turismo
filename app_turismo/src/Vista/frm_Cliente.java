@@ -62,6 +62,13 @@ public class frm_Cliente extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 443, 493);
 		contentPane = new JPanel();
+		contentPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+			}
+		});
 		contentPane.setBackground(new Color(156, 204, 226));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -161,7 +168,7 @@ public class frm_Cliente extends JFrame {
 			txtdireccion.setText(" ");
 			}
 		});
-		btnGuardarCliente.setBounds(40, 388, 155, 55);
+		btnGuardarCliente.setBounds(251, 96, 155, 55);
 		contentPane.add(btnGuardarCliente);
 		
 		txtNombres = new JTextField();
@@ -240,21 +247,22 @@ public class frm_Cliente extends JFrame {
 		btndelete.setForeground(Color.BLACK);
 		btndelete.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btndelete.setBackground(new Color(36, 146, 255));
-		btndelete.setBounds(260, 188, 155, 57);
+		btndelete.setBounds(251, 182, 155, 57);
 		contentPane.add(btndelete);
 		
 		JLabel lblNewLabel_1 = new JLabel("id Clientes");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(285, 145, 69, 14);
+		lblNewLabel_1.setBounds(276, 40, 69, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		txtidcliente = new JTextField();
 		txtidcliente.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		txtidcliente.setBounds(285, 164, 56, 20);
+		txtidcliente.setBounds(276, 65, 56, 20);
 		contentPane.add(txtidcliente);
 		txtidcliente.setColumns(10);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(21, 138, 255));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -266,7 +274,7 @@ public class frm_Cliente extends JFrame {
 		});
 		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnbuscar.setBounds(265, 284, 150, 51);
+		btnbuscar.setBounds(251, 284, 150, 51);
 		contentPane.add(btnbuscar);
 		
 		txttipodocumen = new JTextField();
@@ -280,6 +288,7 @@ public class frm_Cliente extends JFrame {
 		contentPane.add(lblNumeroDocumento);
 		
 		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setBackground(new Color(21, 138, 255));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -316,7 +325,30 @@ public class frm_Cliente extends JFrame {
 		});
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton_1.setBounds(260, 372, 144, 51);
+		btnNewButton_1.setBounds(251, 376, 144, 51);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+				
+			}
+		});
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(10, 405, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 }

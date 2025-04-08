@@ -60,7 +60,7 @@ public class frm_paquetes extends JFrame {
 	public frm_paquetes() {
 		setTitle("Paquete Turismo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 389, 697);
+		setBounds(100, 100, 512, 697);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(238, 240, 142));
 		contentPane.setForeground(Color.WHITE);
@@ -72,7 +72,7 @@ public class frm_paquetes extends JFrame {
 		JLabel lblNewLabel = new JLabel("id Medios");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setBounds(41, 330, 75, 14);
+		lblNewLabel.setBounds(378, 40, 75, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("idDestino");
@@ -112,7 +112,7 @@ public class frm_paquetes extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 		
 		txtidmedios = new JTextField();
-		txtidmedios.setBounds(41, 355, 86, 20);
+		txtidmedios.setBounds(378, 65, 86, 20);
 		contentPane.add(txtidmedios);
 		txtidmedios.setColumns(10);
 		
@@ -225,12 +225,12 @@ public class frm_paquetes extends JFrame {
 		JLabel lblIdPromotor = new JLabel("id Promotor");
 		lblIdPromotor.setForeground(Color.BLACK);
 		lblIdPromotor.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblIdPromotor.setBounds(41, 389, 75, 14);
+		lblIdPromotor.setBounds(41, 330, 75, 14);
 		contentPane.add(lblIdPromotor);
 		
 		txtidpromotor = new JTextField();
 		txtidpromotor.setColumns(10);
-		txtidpromotor.setBounds(41, 410, 86, 20);
+		txtidpromotor.setBounds(41, 355, 86, 20);
 		contentPane.add(txtidpromotor);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("id Agencia");
@@ -261,17 +261,17 @@ public class frm_paquetes extends JFrame {
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
-		btnNewButton.setBounds(195, 509, 155, 60);
+		btnNewButton.setBounds(285, 455, 155, 60);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_5 = new JLabel("Codigo");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		lblNewLabel_5.setBounds(231, 446, 75, 20);
+		lblNewLabel_5.setBounds(41, 385, 75, 20);
 		contentPane.add(lblNewLabel_5);
 		
 		txtcodigo = new JTextField();
 		txtcodigo.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		txtcodigo.setBounds(231, 477, 75, 20);
+		txtcodigo.setBounds(41, 409, 75, 20);
 		contentPane.add(txtcodigo);
 		txtcodigo.setColumns(10);
 		
@@ -290,7 +290,7 @@ public class frm_paquetes extends JFrame {
 		});
 		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnbuscar.setBounds(25, 526, 150, 51);
+		btnbuscar.setBounds(20, 526, 150, 51);
 		contentPane.add(btnbuscar);
 		
 		JButton btnNewButton_1 = new JButton("UPDATE");
@@ -334,7 +334,23 @@ public class frm_paquetes extends JFrame {
 		});
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton_1.setBounds(115, 596, 144, 51);
+		btnNewButton_1.setBounds(285, 526, 144, 51);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+				
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(10, 607, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 }

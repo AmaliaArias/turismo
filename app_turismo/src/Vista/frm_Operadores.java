@@ -36,6 +36,7 @@ public class frm_Operadores extends JFrame {
 	private JTextField txtidvehiculo;
 	private JTextField txtidoperadores;
 	private JButton btnNewButton_1;
+	private JButton btnNewButton_1_1;
 
 	/**
 	 * Launch the application.
@@ -59,7 +60,7 @@ public class frm_Operadores extends JFrame {
 	public frm_Operadores() {
 		setTitle("Operadores Turismo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 383);
+		setBounds(100, 100, 450, 444);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(121, 255, 121));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -156,7 +157,7 @@ public class frm_Operadores extends JFrame {
 				txtnumeroDocum.setText(" ");
 			}
 		});
-		btnGuardarOperadores.setBounds(7, 276, 146, 57);
+		btnGuardarOperadores.setBounds(266, 337, 146, 57);
 		contentPane.add(btnGuardarOperadores);
 		
 		lblNewLabel_5 = new JLabel("Telefono");
@@ -262,5 +263,21 @@ public class frm_Operadores extends JFrame {
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton_1.setBounds(268, 263, 144, 51);
 		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+				
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(10, 355, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 }

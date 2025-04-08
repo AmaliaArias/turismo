@@ -51,7 +51,7 @@ public class frm_Medios extends JFrame {
 	public frm_Medios() {
 		setTitle("Medios de Turismo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 457, 367);
+		setBounds(100, 100, 470, 434);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 159, 207));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -90,7 +90,7 @@ public class frm_Medios extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnGuardarMedios.setBackground(new Color(255, 98, 255));
+		btnGuardarMedios.setBackground(new Color(255, 45, 255));
 		btnGuardarMedios.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGuardarMedios.addMouseListener(new MouseAdapter() {
 			@Override
@@ -108,7 +108,7 @@ public class frm_Medios extends JFrame {
 				txtidtipomedio.setText(" ");
 			}
 		});
-		btnGuardarMedios.setBounds(156, 193, 146, 57);
+		btnGuardarMedios.setBounds(288, 193, 146, 57);
 		contentPane.add(btnGuardarMedios);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("id Tipo Medios");
@@ -143,7 +143,7 @@ public class frm_Medios extends JFrame {
 		txtidMedios.setColumns(10);
 		
 		JButton btnNewButton = new JButton("DELETE");
-		btnNewButton.setBackground(new Color(255, 98, 255));
+		btnNewButton.setBackground(new Color(255, 45, 255));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -162,6 +162,7 @@ public class frm_Medios extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setBackground(new Color(255, 45, 255));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -174,10 +175,11 @@ public class frm_Medios extends JFrame {
 		});
 		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnbuscar.setBounds(281, 261, 150, 51);
+		btnbuscar.setBounds(288, 277, 150, 51);
 		contentPane.add(btnbuscar);
 		
 		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setBackground(new Color(255, 45, 255));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -199,7 +201,24 @@ public class frm_Medios extends JFrame {
 		});
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton_1.setBounds(34, 261, 144, 51);
+		btnNewButton_1.setBounds(125, 277, 144, 51);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+				
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(11, 339, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 }

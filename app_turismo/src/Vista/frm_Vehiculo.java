@@ -54,7 +54,7 @@ public class frm_Vehiculo extends JFrame {
 	public frm_Vehiculo() {
 		setTitle("Tabla Vehiculo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 465, 498);
+		setBounds(100, 100, 465, 565);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 164));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -250,5 +250,20 @@ public class frm_Vehiculo extends JFrame {
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton_1.setBounds(31, 380, 144, 68);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(10, 471, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 }

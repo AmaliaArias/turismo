@@ -81,7 +81,7 @@ public class frm_TipoMedios extends JFrame {
 		
 		JButton btnGuardar = new JButton("SAVE");
 		btnGuardar.setForeground(new Color(255, 255, 255));
-		btnGuardar.setBackground(new Color(115, 12, 199));
+		btnGuardar.setBackground(new Color(128, 0, 255));
 		btnGuardar.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnGuardar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\2931176_diskette_guardar_save_disk_drive_icon.png"));
 		btnGuardar.addActionListener(new ActionListener() {
@@ -115,7 +115,7 @@ public class frm_TipoMedios extends JFrame {
 		
 		JButton btnNewButton = new JButton("DELETE");
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(115, 12, 199));
+		btnNewButton.setBackground(new Color(128, 0, 255));
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -133,6 +133,8 @@ public class frm_TipoMedios extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnbuscar = new JButton("SEARCH");
+		btnbuscar.setForeground(new Color(255, 255, 255));
+		btnbuscar.setBackground(new Color(131, 6, 255));
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -166,10 +168,12 @@ public class frm_TipoMedios extends JFrame {
 		});
 		btntodos.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\3669377_clear_all_ic_icon.png"));
 		btntodos.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btntodos.setBounds(169, 279, 146, 43);
+		btntodos.setBounds(336, 282, 146, 43);
 		contentPane.add(btntodos);
 		
 		JButton btnNewButton_1 = new JButton("UPDATE");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(131, 6, 255));
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -187,5 +191,21 @@ public class frm_TipoMedios extends JFrame {
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton_1.setBounds(321, 94, 144, 51);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+				
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(10, 293, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 }

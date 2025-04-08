@@ -40,6 +40,7 @@ public class frm_Promotor extends JFrame {
 	private JButton btnbuscar;
 	private JTextField txtcontrasena;
 	private JButton btnNewButton_1;
+	private JButton btnNewButton_1_1;
 
 	/**
 	 * Launch the application.
@@ -63,12 +64,13 @@ public class frm_Promotor extends JFrame {
 	public frm_Promotor() {
 		setTitle("Tabla Promotor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 434);
+		setBounds(100, 100, 450, 489);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(132, 255, 132));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		
 		contentPane.setLayout(null);
 		
 		txtfechanac = new JTextField();
@@ -161,7 +163,7 @@ public class frm_Promotor extends JFrame {
 						txttelefono.setText(" ");
 			}
 		});
-		btnGuardar.setBounds(41, 300, 135, 57);
+		btnGuardar.setBounds(274, 332, 135, 57);
 		contentPane.add(btnGuardar);
 		
 		txtnumerod = new JTextField();
@@ -194,11 +196,11 @@ public class frm_Promotor extends JFrame {
 		contentPane.add(lblNumeroDeDocumento);
 		
 		lblNewLabel_1 = new JLabel("ID Promotor");
-		lblNewLabel_1.setBounds(289, 51, 96, 14);
+		lblNewLabel_1.setBounds(274, 29, 96, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		txtidpromotor = new JTextField();
-		txtidpromotor.setBounds(289, 79, 86, 20);
+		txtidpromotor.setBounds(274, 57, 86, 20);
 		contentPane.add(txtidpromotor);
 		txtidpromotor.setColumns(10);
 		
@@ -216,7 +218,7 @@ public class frm_Promotor extends JFrame {
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\8664938_trash_can_delete_remove_icon.png"));
-		btnNewButton.setBounds(289, 104, 135, 51);
+		btnNewButton.setBounds(274, 82, 135, 51);
 		contentPane.add(btnNewButton);
 		
 		btnbuscar = new JButton("SEARCH");
@@ -233,14 +235,13 @@ public class frm_Promotor extends JFrame {
 		});
 		btnbuscar.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\211817_search_strong_icon.png"));
 		btnbuscar.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnbuscar.setBounds(274, 200, 150, 51);
+		btnbuscar.setBounds(274, 166, 150, 51);
 		contentPane.add(btnbuscar);
 		
 		txtcontrasena = new JTextField();
-		txtcontrasena.setText("ESTO NO ES NADA");
 		txtcontrasena.setToolTipText("");
 		txtcontrasena.setColumns(10);
-		txtcontrasena.setBounds(301, 364, 123, 20);
+		txtcontrasena.setBounds(382, 419, 15, 20);
 		contentPane.add(txtcontrasena);
 		
 		btnNewButton_1 = new JButton("UPDATE");
@@ -280,7 +281,22 @@ public class frm_Promotor extends JFrame {
 		});
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\172618_update_icon.png"));
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton_1.setBounds(269, 285, 144, 51);
+		btnNewButton_1.setBounds(274, 254, 144, 51);
 		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_1_1 = new JButton("BACK");
+		btnNewButton_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frm_icon icon = new frm_icon ();
+				
+				icon.setVisible(true);
+			}
+		});
+		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\APRENDIZ\\Downloads\\4470662_app_back_mobile_ui_ux_icon.png"));
+		btnNewButton_1_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton_1_1.setBounds(10, 393, 135, 46);
+		contentPane.add(btnNewButton_1_1);
 	}
 }
